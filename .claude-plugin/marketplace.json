@@ -1,0 +1,11 @@
+{
+  "name": "brand-dream-team",
+  "owner": { "name": "Destiny Alexis" },
+  "plugins": [
+    {
+      "name": "brand-dream-team",
+      "source": "./plugins/brand-dream-team",
+      "description": "Your Brand Dream Team: 8 AI employees, your Dream Team HQ, and a video editor that batch edits your reels in your brand."
+    }
+  ]
+}

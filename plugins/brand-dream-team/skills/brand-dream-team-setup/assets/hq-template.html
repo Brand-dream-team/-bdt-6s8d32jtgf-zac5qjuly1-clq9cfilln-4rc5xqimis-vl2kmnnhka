@@ -1,0 +1,984 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Dream Team HQ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: sidebar + one editorial column; brand look kept single-theme (light) on purpose */
+:root{
+  --bg:#FBF6F8; --side:#F4EAEE; --line:#ECDDE3; --soft:#F4EAEE; --card:#FFFFFF;
+  --ink:#161114; --ink2:#3E3238; --muted:#6E5C64; --muted2:#5E4D55;
+  --blush:#F5BACB; --rose:#E9A3C0; --berry:#B8436E; --berry2:#8E2E55; --pinkpill:#FCE8EE;
+  --green:#1F5E3A; --greenbg:#E8F3EC; --grey:#F1F1F1; --pill2:#2A2126;
+  --display:'Playfair Display',Georgia,'Times New Roman',serif;
+  --body:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14px}
+a{color:var(--berry)}
+button{font:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--berry);outline-offset:2px}
+summary::-webkit-details-marker{display:none}
+.shell{min-height:100vh;display:flex}
+nav.side{flex:0 0 250px;background:var(--side);border-right:1px solid var(--line);padding:24px 16px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:10px;padding:6px 8px 18px}
+.bd{width:28px;height:28px;border-radius:8px;background:var(--ink);color:var(--blush);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+nav.side a{color:var(--muted2);text-decoration:none;padding:7px 10px;border-radius:8px}
+nav.side a.on{background:var(--card);color:var(--ink);font-weight:600}
+.sync{margin-top:auto;font-size:12px;color:var(--muted);padding:8px 10px;display:flex;flex-direction:column;gap:6px}
+main{flex:1;min-width:0;padding-block:48px 80px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:44px}
+header.top{display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--line);padding-bottom:28px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--berry)}
+h1{margin:0;font-family:var(--display);font-size:clamp(38px,6vw,52px);font-weight:600;line-height:1.05;letter-spacing:-.01em;text-wrap:balance}
+h1 .hq{font-weight:700;letter-spacing:.02em}
+.lede{margin:0;font-size:16px;color:var(--muted);max-width:640px}
+h2{margin:0;font-family:var(--display);font-size:32px;font-weight:600;text-wrap:balance}
+.sechead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hint{font-size:13px;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:18px}
+.banner{background:var(--card);border:1.5px solid var(--blush);border-radius:14px;padding:12px 16px;font-size:13.5px;color:var(--ink2);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.banner b{color:var(--ink)}
+.btn{border:0;background:var(--blush);color:var(--ink);font-weight:700;font-size:13px;border-radius:999px;padding:8px 14px}
+.btn.ghost{background:var(--card);border:1px solid var(--line);color:var(--muted)}
+.btn.dark{background:var(--ink);color:var(--blush)}
+.btn[disabled]{opacity:.55;cursor:default}
+/* DNA */
+.dna{display:flex;flex-direction:row;flex-wrap:wrap;gap:20px;align-items:stretch}
+.dna .mission{flex:2 1 420px;min-width:0;background:var(--ink);color:#FFFFFF;border-radius:18px;padding:26px 28px;display:flex;flex-direction:column;gap:14px}
+.dna .mission .eyebrow{color:var(--blush)}
+.dna .mission p{margin:0;font-family:var(--display);font-style:italic;font-size:26px;line-height:1.25}
+.chips{display:flex;flex-wrap:wrap;gap:8px;font-size:13px}
+.chips span{background:var(--pill2);border-radius:999px;padding:6px 12px}
+.dna .colors{flex:1 1 260px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.dna .colors .eyebrow{color:var(--muted)}
+.sw{display:flex;gap:10px}.sw div{flex:1;height:64px;border-radius:12px}
+
+/* check-ins */
+.checkins{display:flex;flex-direction:column;gap:12px}
+.ci{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-align:left;width:100%;color:inherit}
+.ci .av{width:38px;height:38px;font-size:13px}
+.ci .msg{display:flex;flex-direction:column;gap:3px;min-width:0}
+.ci .msg b{font-size:13px}.ci .msg b span{font-weight:500;color:var(--muted)}
+.ci .msg p{margin:0;font-size:15px;line-height:1.4}
+.ci .msg em{font-style:normal;font-size:12px;font-weight:700;color:var(--berry);margin-top:4px}
+/* team */
+.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;align-items:start}
+details.emp{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+details.emp summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none}
+.av{width:44px;height:44px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}
+.av.a{background:var(--ink);color:var(--blush)}.av.b{background:var(--blush);color:var(--ink)}.av.c{background:var(--rose);color:var(--ink)}
+.who{display:flex;flex-direction:column;flex:1;min-width:0}.who b{font-size:15px}.who span{font-size:13px;color:var(--muted)}
+.pill{font-weight:700;border-radius:999px;padding:4px 10px;white-space:nowrap;font-size:12px}
+.p-pink{background:var(--pinkpill);color:var(--berry2)}.p-grey{background:var(--grey);color:var(--ink2)}
+.p-green{background:var(--greenbg);color:var(--green)}.p-dark{background:var(--ink);color:var(--blush)}
+.empbody{display:flex;flex-direction:column;gap:10px;padding-top:12px;margin-top:12px;border-top:1px solid var(--soft)}
+.empbody p{margin:0;font-size:13.5px;color:var(--ink2)}
+.empbody ul{margin:0;padding-left:18px;font-size:13px;color:var(--muted2)}.empbody li{margin:0 0 4px}
+.now{font-size:12px;color:var(--muted)}.now b{color:var(--ink2)}
+.empbody a{font-size:12.5px;font-weight:600}
+.empbody .role{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--berry)}
+.empbody .acts{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.rename{display:flex;flex-direction:column;gap:6px}
+.rename label{font-size:12px;color:var(--muted)}
+.rrow{display:flex;gap:6px;flex-wrap:wrap}
+.rrow input{flex:1 1 140px;min-width:0;font:inherit;font-size:14px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink)}
+.rrow input:focus{outline:2px solid var(--blush);outline-offset:1px}
+/* chat */
+.chat{display:flex;flex-direction:column;gap:8px;background:var(--bg);border:1px solid var(--soft);border-radius:14px;padding:10px}
+.chat .lbl{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.log{display:flex;flex-direction:column;gap:6px;max-height:340px;overflow-y:auto}
+.bub{font-size:13.5px;line-height:1.45;padding:8px 12px;border-radius:14px;white-space:pre-wrap;max-width:92%;overflow-wrap:anywhere}
+.bub.me{align-self:flex-end;background:var(--ink);color:#FFFFFF;border-bottom-right-radius:4px}
+.bub.emp{align-self:flex-start;background:var(--card);border:1px solid var(--line);color:var(--ink2);border-bottom-left-radius:4px}
+.bub.emp.wait{color:var(--muted);font-style:italic}
+.saved{align-self:flex-start;font-size:11.5px;color:var(--green);background:var(--greenbg);border-radius:999px;padding:3px 10px}
+.saved.warn{color:var(--berry2);background:var(--pinkpill)}
+.sugs{display:flex;gap:6px;flex-wrap:wrap}
+.sugs button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--ink2)}
+.ask{display:flex;gap:6px;align-items:flex-end}
+.ask textarea{flex:1;min-width:0;resize:none;font:inherit;font-size:14px;line-height:1.4;padding:9px 12px;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--ink);min-height:40px;max-height:140px}
+.ask textarea:focus{outline:2px solid var(--blush);outline-offset:1px}
+.ask textarea::placeholder{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.clip{position:relative;flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card);display:grid;place-items:center;cursor:pointer;font-size:17px}
+.clip:focus-within{outline:2px solid var(--blush);outline-offset:1px}
+.clip input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.pics{display:flex;gap:6px;flex-wrap:wrap}
+.pic{position:relative;width:56px;height:56px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.pic img{width:100%;height:100%;object-fit:cover;display:block}
+.pic button{position:absolute;top:2px;right:2px;width:20px;height:20px;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;font-size:12px;line-height:20px;padding:0}
+.bub .shots{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+.bub .shots img{width:64px;height:64px;object-fit:cover;border-radius:8px;display:block}
+/* board */
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.col{background:var(--soft);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.col>b{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:4px 6px;display:flex;justify-content:space-between}
+.col.ip>b{color:var(--berry)}.col.dn>b{color:var(--green)}
+.task{background:var(--card);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;border:1.5px solid transparent;text-align:left;width:100%;color:var(--ink)}
+.col.ny .task{border-color:var(--blush)}
+.task .t{font-size:14px;font-weight:600}.task .e{font-size:12px;color:var(--muted)}
+.task.busy{opacity:.55}
+.moves{display:flex;flex-wrap:wrap;gap:6px;padding-top:4px}
+.moves button.ctx{flex-basis:100%;background:var(--ink)!important;color:var(--bg)!important;border-color:var(--ink)!important;text-align:left}
+.moves button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:600;color:var(--ink2)}
+.empty{font-size:12.5px;color:var(--muted);padding:6px}
+.err{font-size:13px;color:var(--berry2);background:var(--pinkpill);border-radius:10px;padding:10px 12px}
+/* hooks */
+.tbl{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:16px}
+table{width:100%;min-width:640px;border-collapse:collapse;font-size:14px}
+th{text-align:left;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em;padding:14px 18px;border-bottom:1px solid var(--line)}
+td{padding:14px 18px;border-bottom:1px solid var(--soft)}
+tr:last-child td{border-bottom:0}
+td.n{color:var(--muted);width:44px;font-variant-numeric:tabular-nums}td.h{font-weight:600}
+td button.pill{border:0}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+td.ck{width:44px;padding-right:0}td.ck input{width:20px;height:20px;accent-color:var(--berry2,#B8436E);cursor:pointer}
+tr.sel td{background:var(--soft)}
+.hookbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 10px}
+.hookbar button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--ink)}
+.hookbar button.go{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.hookbar button:disabled{opacity:.45}
+.hookbar .cnt{font-size:13px;color:var(--muted);margin-right:auto}
+.more{display:block;margin:10px auto 0;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--ink2)}
+.tidy{font-size:12px;color:var(--muted);margin-top:8px}
+/* library */
+.lib{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+article.post{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.post .row{display:flex;justify-content:space-between;align-items:center;gap:10px}.post .row b{font-size:15px}
+.post .meta{font-size:12.5px;color:var(--muted)}
+.post p{margin:0;font-size:13.5px;color:var(--ink2);white-space:pre-line}
+.post .acts{display:flex;gap:8px;flex-wrap:wrap}
+/* ideas */
+.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.idea{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.idea b{font-size:14px}.idea span{font-size:12.5px;color:var(--muted)}
+.mainact{align-self:flex-start;font-size:14px;padding:11px 20px}
+/* briefing */
+.brief{background:var(--card);border:1.5px solid var(--blush);border-radius:18px;padding:22px 24px;gap:12px}
+.brief-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline}
+.brief h3{margin:0;font-family:var(--display);font-size:24px;font-weight:600}
+.brief .focus{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14.5px;font-weight:600}
+.brief .sum{margin:0;font-size:13.5px;color:var(--ink2);white-space:pre-line;max-width:68ch}
+.brief .lbl{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.brief-in{display:flex;flex-direction:column;gap:12px}
+/* feed */
+.feed{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);border-radius:16px}
+.feed li{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--soft)}
+.feed li:last-child{border-bottom:0}
+.feed .av{width:34px;height:34px;font-size:12px}
+.feed .what{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.feed .what b{font-size:14px;font-weight:600}.feed .what span{font-size:12px;color:var(--muted)}
+.feed time{font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.skel{height:64px;border-radius:12px;background:var(--card);opacity:.7}
+footer{font-size:12.5px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px}
+@media (max-width:760px){nav.side{display:none}main{padding-block:28px 60px}.dna .mission p{font-size:22px}}
+@media (prefers-reduced-motion:no-preference){.task,.btn,.moves button{transition:opacity .15s,background .15s}}
+</style>
+
+<div class="shell">
+  <nav class="side" aria-label="Workspace">
+    <div class="brand"><div class="bd">BD</div><b>Brand Dream Team</b></div>
+    <a href="#top" class="on">Dream Team HQ</a>
+    <a href="#dna">Brand DNA</a>
+    <a href="#briefing">Morning briefing</a>
+    <a href="#team">Your Team</a>
+    <a href="#activity">Activity</a>
+    <a href="#tasks">Tasks</a>
+    <a href="#hooks">Hook Bank</a>
+    <a href="#ideas">Content Ideas</a>
+    <a href="#library">Content Library</a>
+    <a class="studioLink" href="#" target="_blank" rel="noopener">Studio ↗</a>
+    <div class="sync"><span id="syncTxt">Opening your HQ…</span><button class="btn ghost" id="refresh" type="button">Refresh</button></div>
+  </nav>
+
+  <main id="top">
+    <div class="wrap">
+      <header class="top">
+        <span class="eyebrow" id="cfgBrand"></span>
+        <h1>Dream Team <span class="hq">HQ</span></h1>
+        <p class="lede">Meet the team you hired: 8 AI employees who plan, create, edit and share your content, keep your week on track and cheer you on, so you can stay present for what matters most. Just tell Claude "run my team" and they get to work.</p>
+        <a class="btn dark studioLink" href="#" target="_blank" rel="noopener" style="display:inline-block;align-self:flex-start;margin-top:14px;text-decoration:none">Open the Studio ↗</a>
+      </header>
+
+      <div class="banner" id="banner" hidden></div>
+
+      <section id="briefing" class="brief" aria-label="Morning briefing">
+        <div class="brief-top"><span class="eyebrow" id="briefFrom">Morning briefing · Your Chief of Staff</span><span class="hint" id="briefWhen"></span></div>
+        <div id="briefBody"><div class="skel"></div></div>
+      </section>
+
+
+      <section id="checkins" class="checkins" aria-label="Team check-ins">
+        <div class="sechead"><h2>Team <em>check-ins</em></h2><span class="hint">Your team keeps an eye on things and lets you know.</span></div>
+        <div id="ciList" class="checkins"><div class="skel"></div></div>
+      </section>
+
+      <section id="dna" class="dna" aria-label="Brand DNA">
+        <div class="mission">
+          <span class="eyebrow">Brand DNA</span>
+          <p id="cfgMission"></p>
+          <div class="chips" id="cfgVoice"></div>
+        </div>
+        <div class="colors">
+          <span class="eyebrow">Brand colors</span>
+          <div class="sw" id="cfgColors"></div>
+          <span class="hint" id="cfgLook"></span>
+        </div>
+      </section>
+
+      <section id="team">
+        <div class="sechead"><h2>Your <em>team</em></h2><span class="hint">Tap anyone to see what they do or give them a new name.</span></div>
+        <div id="teamErr" class="err" hidden></div>
+        <div class="team" id="teamGrid"></div>
+      </section>
+
+      <section id="activity">
+        <div class="sechead"><h2>Team <em>activity</em></h2><span class="hint">What your employees did, newest first.</span></div>
+        <div id="actErr" class="err" hidden></div>
+        <ol class="feed" id="feed"></ol>
+      </section>
+
+      <section id="tasks">
+        <div class="sechead"><h2>This week's <em>tasks</em></h2><span class="hint">Tap a task to move it.</span></div>
+        <div id="tasksErr" class="err" hidden></div>
+        <div class="board" id="board"></div>
+      </section>
+
+      <section id="hooks">
+        <div class="sechead"><h2>Hook <em>Bank</em></h2><span class="hint">Tick the hooks you want and tap Copy for batch. Your Video Editor adds the batch to your board. Then paste it in Claude with your Studio picks.</span></div>
+        <div id="hooksErr" class="err" hidden></div>
+        <div class="hookbar" id="hookBar"></div>
+        <div class="tbl"><table>
+          <thead><tr><th><span class="sr-only">Select</span></th><th>#</th><th>Hook</th><th>For</th><th>From</th><th>Status</th></tr></thead>
+          <tbody id="hookRows"></tbody>
+        </table></div>
+        <div id="hookMore"></div>
+        <p class="tidy">Used hooks and finished tasks clear themselves out after 30 days, so your HQ stays tidy.</p>
+      </section>
+
+      <section id="ideas">
+        <div class="sechead"><h2>Content <em>Ideas</em></h2><span class="hint">Your Content Strategist adds ideas here.</span></div>
+        <div id="ideasErr" class="err" hidden></div>
+        <div class="ideas" id="ideaGrid"></div>
+      </section>
+
+      <section id="library">
+        <div class="sechead"><h2>Content <em>Library</em></h2><span class="hint">Finished posts with captions ready to copy.</span></div>
+        <div id="libErr" class="err" hidden></div>
+        <div class="lib" id="libGrid"></div>
+      </section>
+
+      <footer>
+        <span>Everything here is saved in your HQ. Your team reads and updates it whenever you ask Claude.</span>
+      </footer>
+    </div>
+  </main>
+</div>
+
+<script>
+/* BDT-CONFIG-START: setup replaces everything from here to BDT-CONFIG-END */
+const CONFIG = {
+  creator: "Maya",
+  brandName: "Glow with Maya",
+  mission: "Helping busy moms build a skincare routine that takes 5 minutes.",
+  voice: ["Voice: bubbly bestie", "Practical", "No-judgment"],
+  brandSummary: "Brand: Glow with Maya. Mission: helping busy moms build a skincare routine that takes 5 minutes. Audience: moms with little time. Voice: bubbly bestie, practical, no judgment. Topics: Skincare, Motherhood, Routines. Colors: blush pink, black and white.",
+  colors: ["#F5BACB", "#E9A3C0", "#FFFFFF", "#0A0A0A"],
+  look: "Blush · Playfair Display + Inter",
+  theme: {},  // their color roles: {accent, accent2, ink} as HEX (accent = main brand color, ink = their darkest color). Empty = worked out from colors.
+  fonts: {display: "Playfair Display", body: "Inter"},  // their Brand DNA fonts (Google Fonts names): headings, body text
+  pillars: ["Skincare", "Motherhood", "Routines"],
+  faith: false,
+  studioUrl: "https://claude.ai/artifact/PyHsJ4EcAV92H6nS2NUyVn",
+  names: {"Chief of Staff":"Grace","Content Strategist":"Harper","Social Media Manager":"Jade","Newsletter & Email Manager":"Nia","YouTube Producer":"Quinn","Video Editor":"Sloane","Creative Director":"Ivy","Life Coach":"Hope"}
+};
+/* BDT-CONFIG-END */
+document.title = "Dream Team HQ";
+(function applyConfig(){
+  const q = id => document.getElementById(id);
+  const e = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  q("cfgBrand").textContent = CONFIG.brandName;
+  q("cfgMission").textContent = CONFIG.mission;
+  q("cfgVoice").innerHTML = CONFIG.voice.map(v => `<span>${e(v)}</span>`).join("");
+  q("cfgColors").innerHTML = CONFIG.colors.map(c => `<div style="background:${e(c)}${/^#?f{3,6}$/i.test(c.replace("#","")) ? ";border:1px solid var(--line)" : ""}"></div>`).join("");
+  q("cfgLook").textContent = CONFIG.look;
+  const ok = /^https:\/\/claude\.ai\//.test(CONFIG.studioUrl);
+  document.querySelectorAll(".studioLink").forEach(a => { if (ok) a.href = CONFIG.studioUrl; else a.remove(); });
+})();
+(function applyTheme(){
+  // the creator's own colors and fonts run the whole HQ (Guided Blush keeps the original look)
+  const hx = h => { h = String(h || "").replace("#", "").trim(); if (h.length === 3) h = h.split("").map(c => c + c).join(""); if (!/^[0-9a-f]{6}$/i.test(h)) return null; const n = parseInt(h, 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; };
+  const hex = c => "#" + c.map(v => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, "0")).join("");
+  const lum = c => { const v = c.map(x => { x /= 255; return x <= .03928 ? x / 12.92 : Math.pow((x + .055) / 1.055, 2.4); }); return .2126 * v[0] + .7152 * v[1] + .0722 * v[2]; };
+  const con = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+  const mix = (a, b, k) => a.map((v, i) => v + (b[i] - v) * k);
+  const sat = c => { const mx = Math.max(...c), mn = Math.min(...c); return mx ? (mx - mn) / mx : 0; };
+  const W = [255, 255, 255], K = [0, 0, 0], root = document.documentElement.style, set = (k, c) => root.setProperty(k, hex(c));
+  const T = CONFIG.theme || {}, cols = (CONFIG.colors || []).map(hx).filter(Boolean);
+  const blushDefault = (CONFIG.colors || []).join(",").toUpperCase() === "#F5BACB,#E9A3C0,#FFFFFF,#0A0A0A";
+  if (!blushDefault || T.accent) {
+    const colorful = cols.filter(c => sat(c) > .18 && lum(c) > .015 && lum(c) < .92).sort((a, b) => sat(b) * (lum(b) > .2 ? 1 : .6) - sat(a) * (lum(a) > .2 ? 1 : .6));
+    const acc = hx(T.accent) || colorful[0] || cols.find(c => lum(c) > .1 && lum(c) < .9) || [245, 186, 203];
+    const acc2 = hx(T.accent2) || colorful.find(c => c.join() !== acc.join()) || mix(acc, W, .3);
+    const dark = cols.filter(c => lum(c) < .05).sort((a, b) => lum(a) - lum(b))[0];
+    const ink = hx(T.ink) || (dark ? mix(dark, K, .25) : [22, 17, 20]);
+    let blush = acc; while (lum(blush) < .32 || con(blush, ink) < 4.5) { blush = mix(blush, W, .1); if (lum(blush) > .95) break; }
+    let rose = acc2; while (lum(rose) < .32 || con(rose, ink) < 4.5) { rose = mix(rose, W, .1); if (lum(rose) > .95) break; }
+    let berry = acc; while (con(berry, W) < 4.6) berry = mix(berry, K, .08);
+    let berry2 = berry; while (con(berry2, W) < 7) berry2 = mix(berry2, K, .08);
+    const bg = mix(acc, W, .955), side = mix(acc, W, .91);
+    set("--blush", blush); set("--rose", rose); set("--berry", berry); set("--berry2", berry2);
+    set("--pinkpill", mix(acc, W, .86)); set("--bg", bg); set("--side", side); set("--soft", side); set("--line", mix(acc, W, .83));
+    set("--ink", ink); set("--ink2", mix(ink, W, .2)); set("--pill2", mix(ink, W, .1));
+    let muted = mix(ink, W, .42); while (con(muted, bg) < 4.6) muted = mix(muted, ink, .1);
+    set("--muted", muted); set("--muted2", mix(muted, ink, .15));
+    const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.content = hex(bg);
+  }
+  // dark HQ: their darkest brand color as the background (theme.mode "dark", or theme.background "#hex")
+  if (T.mode === "dark" || T.background) {
+    const colorful = cols.filter(c => sat(c) > .18 && lum(c) > .015 && lum(c) < .92).sort((a, b) => sat(b) * (lum(b) > .2 ? 1 : .6) - sat(a) * (lum(a) > .2 ? 1 : .6));
+    const acc = hx(T.accent) || colorful[0] || [245, 186, 203];
+    const base = hx(T.background) || hx(T.ink) || cols.filter(c => lum(c) < .05).sort((a, b) => lum(a) - lum(b))[0] || [14, 14, 18];
+    const light = cols.filter(c => lum(c) > .7).sort((a, b) => lum(b) - lum(a))[0] || [245, 242, 236];
+    const deep = mix(base, K, .35), card = mix(base, W, .065), side = mix(base, W, .035);
+    let blush = acc; while (con(blush, deep) < 6 && lum(blush) < .95) blush = mix(blush, W, .08);
+    let rose = hx(T.accent2) || colorful.find(c => c.join() !== acc.join()) || mix(acc, W, .3); while (con(rose, deep) < 5 && lum(rose) < .95) rose = mix(rose, W, .1);
+    let muted = mix(light, base, .42); while (con(muted, card) < 4.6) muted = mix(muted, light, .12);
+    set("--bg", base); set("--side", side); set("--soft", side); set("--card", card); set("--line", mix(base, W, .15));
+    set("--ink", light); set("--ink2", mix(light, base, .14)); set("--muted", muted); set("--muted2", mix(muted, light, .2));
+    set("--blush", blush); set("--rose", rose); set("--berry", blush); set("--berry2", blush);
+    set("--pinkpill", mix(acc, base, .78)); set("--pill2", mix(deep, W, .1)); set("--grey", mix(base, W, .12));
+    set("--green", [134, 214, 160]); set("--greenbg", mix([31, 94, 58], base, .45)); root.setProperty("--deep", hex(deep));
+    root.setProperty("color-scheme", "dark"); document.documentElement.classList.add("dark");
+    const st = document.createElement("style");
+    st.textContent = `html.dark .bd,html.dark .btn.dark,html.dark .av.a,html.dark .p-dark{background:var(--deep)}
+html.dark .dna .mission{background:var(--deep);border:1px solid var(--line)}
+html.dark .btn,html.dark .av.b,html.dark .av.c{color:var(--deep)}
+html.dark .btn.ghost{color:var(--muted)}html.dark .btn.dark{color:var(--blush)}
+html.dark .bub.me{background:var(--blush);color:var(--deep)}
+html.dark .moves button.ctx,html.dark .hookbar button.go{background:var(--blush)!important;color:var(--deep)!important;border-color:var(--blush)!important}
+html.dark .sw div{box-shadow:0 0 0 1px var(--line)}`;
+    document.head.appendChild(st);
+    const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.content = hex(base);
+  }
+  // fonts: their Brand DNA fonts (any Google Font), headings + body
+  const F = CONFIG.fonts || {}, fams = [F.display, F.body].filter(f => f && /^[A-Za-z0-9 ]{2,40}$/.test(f) && !/^(Playfair Display|Inter)$/i.test(f));
+  if (fams.length) {
+    const l = document.createElement("link"); l.rel = "stylesheet";
+    l.href = "https://fonts.googleapis.com/css2?" + fams.map(f => "family=" + f.trim().replace(/ /g, "+") + ":wght@400;500;600;700;800").join("&") + "&display=swap";
+    document.head.appendChild(l);
+  }
+  if (F.display && /^[A-Za-z0-9 ]{2,40}$/.test(F.display)) root.setProperty("--display", `'${F.display}',Georgia,serif`);
+  if (F.body && /^[A-Za-z0-9 ]{2,40}$/.test(F.body)) root.setProperty("--body", `'${F.body}',system-ui,-apple-system,sans-serif`);
+})();
+</script>
+<script>
+const COL = {tasks:"tasks", hooks:"hooks", lib:"library", ideas:"ideas", brief:"briefings", act:"activity", team:"team"};
+const slug = role => role.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+const TEAM = [
+  {n:"Chief of Staff",i:"CS",av:"a",role:"Team Leader & Personal Assistant",d:"Oversees the whole team, keeps projects organized and makes sure everything stays on track.",l:["Daily morning briefings","Tracks tasks, deadlines and progress","Coordinates the other employees","Finds priorities and unfinished work","Recommends what to focus on today"]},
+  {n:"Content Strategist",i:"CT",av:"b",role:"Content Ideas & Planning",d:"Helps you know what to post and how to say it, based on your Brand DNA.",l:["Content ideas and hooks","Scripts and captions","Content calendars","Content series and strategies","What to post for your goals"]},
+  {n:"Social Media Manager",i:"SM",av:"c",role:"Account Management & Growth",d:"Reviews your accounts, reads your results and finds ways to grow.",l:["Reviews your pages and content","Analyzes available analytics","What's working and what's not","Competitor and trend research","Ways to improve reach and engagement"]},
+  {n:"Newsletter & Email Manager",i:"NE",av:"a",role:"Newsletter, Email Marketing & Launches",d:"Writes your newsletter, welcome emails and launch emails in your voice, using what you posted that week.",l:["Weekly newsletter from this week's content","Welcome emails for new subscribers","Launch and sales email sequences","Subject lines that get opened","Turns your best posts into emails"]},
+  {n:"YouTube Producer",i:"YT",av:"b",role:"YouTube Strategy & Production",d:"Runs your YouTube process, from video ideas to published.",l:["Researches topics and competitors","Video ideas and titles","Scripts and outlines","Recording schedules","Tracks videos idea to published","Reviews YouTube analytics"],idle:["Version 2","p-grey"],idleNow:"Coming with YouTube"},
+  {n:"Video Editor",i:"VE",av:"c",role:"Your hired video editor inside Claude",d:"Pick your looks in the Studio and {nick} edits them for you in Claude.",l:["Plans each edit: hook, look, effects and B-roll","Tells you exactly what to attach and paste","Batch edits a week of videos in your style","Writes 3 hook versions for any reel","Keeps track of every edit until it's done"]},
+  {n:"Creative Director",i:"CD",av:"a",role:"Visual Branding & Creative Direction",d:"Keeps your look consistent and creates the visuals that make your content recognizable.",l:["Visual branding, fonts and colors","YouTube thumbnail concepts","Visual assets","Turns inspiration into custom presets","Maintains your Editing Style Library","Consistency across platforms"]},
+  (CONFIG.faith
+    ? {n:"Life Coach",i:"LC",av:"b",role:"Faith, Family & Life Balance",d:"Your encourager and accountability partner for faith, family, business and everyday life.",l:["Encouragement when you're stuck or doubting","Talks through decisions and problems with you","Helps you build a prayer and devotional routine","Plans your day and week for balance","Weekly check-ins on faith, family and business goals","Points you to real support when you need more than a coach"],idle:["Here for you","p-pink"],idleNow:"Ask for a Sunday reset and prayer plan"}
+    : {n:"Life Coach",i:"LC",av:"b",role:"Mindset, Balance & Encouragement",d:"Your encourager and accountability partner for business, family and everyday life.",l:["Encouragement when you're stuck or doubting","Talks through decisions and problems with you","Helps you build healthy routines","Plans your day and week for balance","Weekly check-ins on your goals","Points you to real support when you need more than a coach"],idle:["Here for you","p-pink"],idleNow:"Ask for a Sunday reset"})
+];
+const COLS = [["To do","td"],["In progress","ip"],["Needs your yes","ny"],["Done","dn"]];
+
+const state = {tasks:null, hooks:null, lib:null, ideas:null, brief:null, act:null, team:null, open:null, openEmp:null, renaming:null, busy:{}, override:{}};
+const NICK = CONFIG.names;
+function teamRow(role){ return (state.team || []).find(r => r.Name === role); }
+function nickOf(role){ const o = state.override["team/" + slug(role)]; const r = teamRow(role); const v = o ? o.Nickname : (r ? val(r, "Nickname") : null); return (v && String(v).trim()) || NICK[role] || role; }
+let db = null;
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function val(r, k){ const o = state.override[r.url]; return (o && k in o) ? o[k] : r[k]; }
+
+/* ---------- render ---------- */
+function renderTeam(){
+  const act = document.activeElement, focusId = act && act.id && $("teamGrid").contains(act) ? act.id : null;
+  const selS = focusId && act.selectionStart, selE = focusId && act.selectionEnd;
+  paintTeam();
+  if (focusId) { const el = $(focusId); if (el) { el.focus(); try { el.setSelectionRange(selS, selE); } catch(_) {} } }
+}
+function paintTeam(){
+  const tasks = state.tasks || [];
+  $("teamGrid").innerHTML = TEAM.map(e => {
+    const mine = tasks.filter(t => val(t,"Employee") === e.n);
+    const pick = s => mine.find(t => val(t,"Status") === s);
+    let pill, now;
+    const ny = pick("Needs your yes"), ip = pick("In progress"), td = pick("To do"), dn = pick("Done");
+    if (ny) { pill = ["Waiting on you","p-dark"]; now = ny.Task; }
+    else if (ip) { pill = ["Working","p-pink"]; now = ip.Task; }
+    else if (td) { pill = ["Up next","p-grey"]; now = td.Task; }
+    else if (dn) { pill = ["Done","p-green"]; now = dn.Task; }
+    else { pill = e.idle || ["Ready","p-grey"]; now = e.idleNow || "Waiting for your next request"; }
+    if (state.tasks === null) { pill = ["…","p-grey"]; now = "Loading…"; }
+    const nick = nickOf(e.n);
+    const ini = nick.trim().charAt(0).toUpperCase() || e.i;
+    const editing = state.renaming === e.n;
+    const renameUI = editing
+      ? `<form class="rename" data-rename-form="${esc(e.n)}"><label for="nick-${e.i}">New name for your ${esc(e.n)}</label><div class="rrow"><input id="nick-${e.i}" maxlength="24" value="${esc(nick)}" autocomplete="off"><button class="btn dark" type="submit">Save</button><button class="btn ghost" type="button" data-rename-cancel="1">Cancel</button></div></form>`
+      : `<div class="acts"><button class="btn ghost" type="button" data-rename="${esc(e.n)}"${db ? "" : " disabled title=\"Open in Claude to rename\""}>Rename</button></div>`;
+    return `<details class="emp" data-emp="${esc(e.n)}"${state.openEmp === e.n ? " open" : ""}><summary><div class="av ${e.av}">${esc(ini)}</div><div class="who"><b>${esc(nick)}</b><span>${esc(e.n)}</span></div><span class="pill ${pill[1]}">${esc(pill[0])}</span></summary>
+      <div class="empbody"><span class="role">${esc(e.role)}</span><p>${esc(e.d.replace("{nick}", nickOf(e.n)))}</p><ul>${e.l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+      <div class="now"><b>Now:</b> ${esc(now)}</div>
+      ${chatUI(e, nick)}
+      ${renameUI}</div></details>`;
+  }).join("");
+}
+
+function renderBoard(){
+  const b = $("board");
+  if (state.tasks === null) { b.innerHTML = COLS.map(([n,c]) => `<div class="col ${c}"><b>${n}</b><div class="skel"></div></div>`).join(""); return; }
+  b.innerHTML = COLS.map(([name,c]) => {
+    let items = state.tasks.filter(t => val(t,"Status") === name);
+    const doneMore = name === "Done" && items.length > 8 && !state.allDone ? items.length - 8 : 0;
+    if (name === "Done") items = items.slice().reverse().slice(0, state.allDone ? items.length : 8);
+    const cards = items.map(t => {
+      const open = state.open === t.url;
+      const who = val(t,"Employee"); const known = TEAM.some(x => x.n === who);
+      const ctx = (open && name !== "Done") ? `<button type="button" class="ctx" data-ctx="${esc(t.url)}">💬 ${known ? `Ask ${esc(nickOf(who))} for more detail` : "Ask for more detail"}</button>` : "";
+      const moves = open ? `<div class="moves">${ctx}${COLS.filter(([n])=>n!==name).map(([n])=>`<button type="button" data-move="${esc(t.url)}" data-to="${esc(n)}">${n === "Done" ? "Mark done" : "Move to " + esc(n)}</button>`).join("")}</div>` : "";
+      return `<div class="task${state.busy[t.url] ? " busy" : ""}" role="button" tabindex="0" data-task="${esc(t.url)}" aria-expanded="${open}"><span class="t">${esc(t.Task)}</span><span class="e">${esc(val(t,"Employee") || "Unassigned")}</span>${moves}</div>`;
+    }).join("");
+    return `<div class="col ${c}"><b>${name}<span>${(name === "Done" ? items.length + doneMore : items.length) || ""}</span></b>${doneMore ? `<button type="button" class="more" data-alldone="1">Show ${doneMore} older</button>` : ""}${cards || `<span class="empty">${name === "Needs your yes" ? "Nothing waiting on you." : "Nothing here yet."}</span>`}</div>`;
+  }).join("");
+}
+
+function pillFor(s){ return s === "Used" ? "p-green" : "p-pink"; }
+const SEL = new Set(); let showAllHooks = false;
+const nowISO = () => new Date().toISOString();
+const DAY = 864e5; function ageDays(r, k){ const t = Date.parse(r[k] || r.Created || ""); return isNaN(t) ? 0 : (Date.now() - t) / DAY; }
+function renderHooks(){
+  const tb = $("hookRows"), bar = $("hookBar"), more = $("hookMore");
+  if (state.hooks === null) { tb.innerHTML = `<tr><td></td><td class="n">…</td><td colspan="4" class="hint">Loading your hooks…</td></tr>`; bar.innerHTML = ""; more.innerHTML = ""; return; }
+  if (!state.hooks.length) { tb.innerHTML = `<tr><td colspan="6" class="hint">No hooks yet. Tell Claude "give me 25 hooks for this week."</td></tr>`; bar.innerHTML = ""; more.innerHTML = ""; return; }
+  for (const u of [...SEL]) if (!state.hooks.some(h => h.url === u)) SEL.delete(u);
+  const fresh = state.hooks.filter(h => (val(h,"Status") || "New") !== "Used");
+  const used = state.hooks.filter(h => val(h,"Status") === "Used").slice().reverse();
+  const list = showAllHooks ? [...fresh, ...used] : [...fresh.slice(0, 25), ...used.slice(0, Math.max(0, 25 - fresh.length))];
+  const hidden = fresh.length + used.length - list.length;
+  bar.innerHTML = `<span class="cnt">${SEL.size ? `${SEL.size} selected` : `${fresh.length} new · ${used.length} used`}</span>
+    <button type="button" data-hk="new">Select all new</button>
+    <button type="button" data-hk="none"${SEL.size ? "" : " disabled"}>Clear</button>
+    <button type="button" data-hk="used"${SEL.size ? "" : " disabled"}>Mark used</button>
+    <button type="button" class="go" data-hk="copy"${SEL.size ? "" : " disabled"}>${hookFlash || `Copy for batch${SEL.size ? ` (${SEL.size})` : ""}`}</button>`;
+  tb.innerHTML = list.map(h => {
+    const s = val(h,"Status") || "New", on = SEL.has(h.url);
+    return `<tr class="${on ? "sel" : ""}"><td class="ck"><input type="checkbox" data-pick="${esc(h.url)}" aria-label="Select hook ${esc(h.No)}"${on ? " checked" : ""}></td><td class="n">${esc(h.No)}</td><td class="h">${esc(h.Hook)}</td><td>${esc(h.For)}</td><td>${esc(h.From)}</td><td><button type="button" class="pill ${pillFor(s)}" data-hook="${esc(h.url)}" title="Tap to mark ${s === "Used" ? "New" : "Used"}"${state.busy[h.url] ? " disabled" : ""}>${esc(s)}</button></td></tr>`;
+  }).join("");
+  more.innerHTML = hidden > 0 ? `<button type="button" class="more" data-hk="all">Show all ${fresh.length + used.length} hooks</button>` : (showAllHooks && list.length > 25 ? `<button type="button" class="more" data-hk="less">Show fewer</button>` : "");
+}
+let hookFlash = "";
+function batchText(rows){
+  return ["Brand Dream Team: batch edit. Make one video per hook below, using my Studio picks.",
+    ...rows.map((h, k) => `${k + 1}. ${h.Hook}${h.For ? ` (${h.For})` : ""}`),
+    "Show me the storyboards together before you edit."].join("\n");
+}
+async function copyText(t){
+  try { await navigator.clipboard.writeText(t); return true; } catch(e) {}
+  try { const ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); const ok = document.execCommand("copy"); ta.remove(); return ok; } catch(e) { return false; }
+}
+document.addEventListener("change", ev => {
+  const c = ev.target.closest("[data-pick]"); if (!c) return;
+  if (c.checked) SEL.add(c.dataset.pick); else SEL.delete(c.dataset.pick); renderHooks();
+});
+document.addEventListener("click", async ev => {
+  const b = ev.target.closest("[data-hk]"); if (!b) return;
+  const k = b.dataset.hk, H = state.hooks || [];
+  if (k === "new") H.filter(h => (val(h,"Status") || "New") !== "Used").slice(0, 25).forEach(h => SEL.add(h.url));
+  if (k === "none") SEL.clear();
+  if (k === "all") showAllHooks = true;
+  if (k === "less") showAllHooks = false;
+  if (k === "copy") {
+    const rows = H.filter(h => SEL.has(h.url));
+    const ok = await copyText(batchText(rows));
+    let logged = false;
+    if (ok && db && rows.length) {
+      const n = rows.length, title = `Batch edit ${n} ${n === 1 ? "video" : "videos"}`;
+      try {
+        await db.collection(COL.tasks).add({Task:title, Employee:"Video Editor", Status:"In progress", Kind:"batch", Notes:rows.map(h => h.Hook).join("\n").slice(0,1900), Created:nowISO()});
+        db.collection(COL.act).add({"What happened":"Added to the list: " + title, Employee:"Video Editor", When:nowISO()}).catch(()=>{});
+        for (const h of rows) db.doc(h.url).update({Status:"Used", UsedAt:nowISO()}).catch(()=>{});
+        SEL.clear(); logged = true;
+      } catch(e) {}
+    }
+    hookFlash = ok ? (logged ? `Copied! ${nickOf("Video Editor")} added it to your board` : "Copied! Paste it in Claude") : "Couldn't copy. Select the text below";
+    renderHooks(); if (ok) setTimeout(() => { hookFlash = ""; renderHooks(); }, 3000);
+    if (!ok) { $("hookMore").innerHTML = `<textarea class="more" style="width:100%;min-height:140px;border-radius:12px" readonly>${esc(batchText(rows))}</textarea>`; }
+    return;
+  }
+  if (k === "used" && db) {
+    const rows = H.filter(h => SEL.has(h.url)); SEL.clear();
+    for (const h of rows) { try { await db.doc(h.url).update({Status: "Used", UsedAt: nowISO()}); } catch(e) { setSecErr("hooks", errCopy(e)); break; } }
+  }
+  renderHooks();
+});
+
+/* ---------- tidy: things that are finished clear themselves out after 30 days ---------- */
+let tidied = false;
+async function tidy(){
+  if (tidied || !db || [state.tasks, state.hooks, state.act].some(x => x === null)) return;
+  tidied = true;
+  const old = [
+    ...(state.hooks || []).filter(h => val(h,"Status") === "Used" && ageDays(h, "UsedAt") > 30).map(h => h.url),
+    ...(state.tasks || []).filter(t => val(t,"Status") === "Done" && ageDays(t, "DoneAt") > 30).map(t => t.url),
+    ...(state.act || []).filter(a => ageDays(a, "When") > 60).map(a => a.url)];
+  for (const u of old.slice(0, 200)) { try { await db.doc(u).delete(); } catch(e) { break; } }
+}
+
+function libPill(s){ return s === "Ready to post" ? "p-dark" : s === "Posted" ? "p-green" : "p-grey"; }
+function renderLib(){
+  const g = $("libGrid");
+  if (state.lib === null) { g.innerHTML = `<div class="skel"></div><div class="skel"></div>`; return; }
+  if (!state.lib.length) { g.innerHTML = `<span class="hint">Finished posts land here after your Video Editor renders them.</span>`; return; }
+  g.innerHTML = state.lib.map(p => {
+    const s = val(p,"Status") || "In progress";
+    const cap = p.Caption || "";
+    const meta = [p.Type, p.Preset].filter(Boolean).join(" · ");
+    return `<article class="post"><div class="row"><b>${esc(p.Title)}</b><span class="pill ${libPill(s)}">${esc(s)}</span></div>
+      <span class="meta">${esc(meta)}</span><p>${esc(cap || "Caption coming soon.")}</p>
+      <div class="acts"><button type="button" class="btn${cap ? "" : " ghost"}" data-copy="${esc(p.url)}"${cap ? "" : " disabled"}>Copy caption</button>
+      ${s === "Ready to post" ? `<button type="button" class="btn ghost" data-posted="${esc(p.url)}"${state.busy[p.url] ? " disabled" : ""}>Mark posted</button>` : ""}</div></article>`;
+  }).join("");
+}
+
+function renderIdeas(){
+  const g = $("ideaGrid");
+  if (state.ideas === null) { g.innerHTML = `<div class="skel"></div>`; return; }
+  if (!state.ideas.length) { g.innerHTML = `<span class="hint">No ideas yet. Tell Claude "Content Strategist, give me 10 content ideas."</span>`; return; }
+  g.innerHTML = state.ideas.map(i => `<div class="idea"><b>${esc(i.Idea)}</b><span>${esc([i.Format, i.Pillar, i.Status].filter(Boolean).join(" · "))}</span>${i.Notes ? `<span>${esc(i.Notes)}</span>` : ""}</div>`).join("");
+}
+
+function ago(iso){
+  const t = Date.parse(iso); if (!t) return "";
+  const m = Math.round((Date.now() - t) / 60000);
+  if (m < 1) return "just now";
+  if (m < 60) return m + "m ago";
+  const h = Math.round(m / 60); if (h < 24) return h + "h ago";
+  const d = Math.round(h / 24); if (d < 7) return d + "d ago";
+  return new Date(t).toLocaleDateString([], {month:"short", day:"numeric"});
+}
+function renderBrief(){
+  const box = $("briefBody");
+  if (state.brief === null) { box.innerHTML = `<div class="skel"></div>`; return; }
+  const b = state.brief[0];
+  if (!b) {
+    $("briefWhen").textContent = "";
+    box.innerHTML = `<div class="brief-in"><h3>Ready when you are.</h3><p class="sum">Open ${esc(nickOf("Chief of Staff"))} under Your team and tap Brief me. They'll read your tasks, hooks and posts and tell you the 3 things to focus on today.</p></div>`;
+    return;
+  }
+  $("briefWhen").textContent = ago(b.Created);
+  $("briefFrom").textContent = "Morning briefing · " + nickOf("Chief of Staff") + ", your Chief of Staff";
+  const focus = String(b.Focus || "").split(/\n+/).map(s => s.replace(/^[\s\-•\d.]+/, "").trim()).filter(Boolean);
+  box.innerHTML = `<div class="brief-in"><h3>${esc(b.Briefing)}</h3>
+    ${focus.length ? `<span class="lbl">Focus today</span><ol class="focus">${focus.map(f=>`<li>${esc(f)}</li>`).join("")}</ol>` : ""}
+    ${b.Summary ? `<p class="sum">${esc(b.Summary)}</p>` : ""}
+    </div>`;
+}
+function renderFeed(){
+  const f = $("feed");
+  if (state.act === null) { f.innerHTML = `<li><span class="hint">Loading activity…</span></li>`; return; }
+  if (!state.act.length) { f.innerHTML = `<li><span class="hint">Nothing yet. Your employees log their work here.</span></li>`; return; }
+  f.innerHTML = state.act.map(a => {
+    const e = TEAM.find(x => x.n === a.Employee) || {i:"BD", av:"a", n:a.Employee || "Team"};
+    const nick = TEAM.includes(e) ? nickOf(e.n) : "";
+    const title = a.Link ? `<a href="${esc(a.Link)}" target="_blank" rel="noopener">${esc(a["What happened"])}</a>` : esc(a["What happened"]);
+    return `<li><div class="av ${e.av}">${esc(nick ? nick.charAt(0).toUpperCase() : e.i)}</div><div class="what"><b>${title}</b><span>${esc(nick ? nick + " · " + e.n : e.n)}</span></div><time datetime="${esc(a.When)}">${esc(ago(a.When))}</time></li>`;
+  }).join("");
+}
+
+
+/* ---------- check-ins (from your boards, no AI needed) ---------- */
+function ciData(){
+  const T = state.tasks || [], H = state.hooks || [], L = state.lib || [];
+  const by = (role, st) => T.filter(r => val(r,"Employee") === role && (!st || val(r,"Status") === st));
+  return {T, H, L, by,
+    needs: T.filter(r => val(r,"Status") === "Needs your yes"),
+    prog: T.filter(r => val(r,"Status") === "In progress"),
+    todo: T.filter(r => val(r,"Status") === "To do"),
+    newHooks: H.filter(r => val(r,"Status") !== "Used"),
+    ready: L.filter(r => val(r,"Status") === "Ready to post"),
+    doneEdits: T.filter(r => val(r,"Employee") === "Video Editor" && val(r,"Status") === "Done" && ageDays(r,"DoneAt") < 4),
+    staleEdits: T.filter(r => val(r,"Employee") === "Video Editor" && val(r,"Status") === "In progress" && ageDays(r,"Created") >= 2),
+    day: new Date().getDay()};
+}
+function renderCheckins(){
+  const el = $("ciList"); if (!el) return;
+  if (state.tasks === null || state.hooks === null || state.lib === null) return;
+  const d = ciData(), seed = Math.floor(Date.now() / 864e5);
+  let list = [];
+  TEAM.forEach((e, i) => { const f = CHECKS[e.n]; if (!f) return; const r = f(d); if (r) list.push({e, text:r[0].replace(/\bSloane\b/g, nickOf("Video Editor")), ask:r[1], pri:r[2] || 0, i, flag:r[3] || "", fk:r[4] || ""}); });
+  list.sort((a, b) => (b.pri - a.pri) || (((a.i + seed) % TEAM.length) - ((b.i + seed) % TEAM.length)));
+  list = list.slice(0, 3);
+  if (!list.length) { el.innerHTML = `<span class="hint">All quiet. Your team will check in when something needs you.</span>`; return; }
+  el.innerHTML = list.map(c => { const nick = nickOf(c.e.n); return `<button class="ci" type="button" data-ci="${esc(c.e.n)}" data-text="${esc(c.ask)}" data-flag="${esc(c.flag)}" data-fk="${esc(c.fk)}"><div class="av ${c.e.av}">${esc(nick.charAt(0).toUpperCase())}</div><div class="msg"><b>${esc(nick)} <span>· ${esc(c.e.n)}</span></b><p>${esc(c.text)}</p><em>Reply to ${esc(nick)} →</em></div></button>`; }).join("");
+}
+const CHECKS = {
+  "Chief of Staff": d => d.needs.length ? [`Quick heads up: ${d.needs.length} ${d.needs.length===1?"thing needs":"things need"} your yes before the team can keep going. Want the rundown?`, "Brief me for today.", 3]
+    : d.prog.length ? [`We've got ${d.prog.length} things in motion. Want me to pick your top 3 for today?`, "What should I focus on today?", 1] : null,
+  "Content Strategist": d => { const t = d.doneEdits.find(x => !x.CaptionsAsked);
+    if (t) return [`Sloane just finished "${t.Task}". Want me to write the captions?`, `Write a caption for each finished reel from "${t.Task}"${t.Notes ? ":\n" + t.Notes : "."}`, 3, t.url, "CaptionsAsked"];
+    return d.newHooks.length >= 5 ? [`Ooh, you've got ${d.newHooks.length} fresh hooks sitting in the bank. Want me to turn 3 of them into reels this week?`, "Turn 3 of my unused hooks into Reel plans for this week.", 1]
+    : ["Your Hook Bank is running low 👀 Want 10 new ones?", "Give me 10 new hooks for this week. Mix Reels, B-roll and carousels.", 2]; },
+  "Social Media Manager": d => d.ready.length ? [`${d.ready.length} ${d.ready.length===1?"post is":"posts are"} ready and just sitting there. Want me to tell you the best time to post?`, "When should I post the posts that are ready?", 2]
+    : ["Haven't looked at your numbers in a while. Screenshot your Insights and I'll tell you what's actually working.", "I want you to review my Instagram analytics. Tell me exactly which screenshots to take and attach.", 0],
+  "Video Editor": d => { const n = d.by("Video Editor","Needs your yes").length;
+    if (!n && d.staleEdits.length) { const t = d.staleEdits[0]; return [`"${t.Task}" is still waiting on us. Want to knock it out tonight? I'll walk you through it.`, `I'm ready to finish "${t.Task}". Walk me through the steps.`, 2]; }
+    const fresh = d.doneEdits.find(t => !t.CarouselAsked);
+    if (!n && fresh) return [`"${fresh.Task}" is done 🎉 Want me to add "Turn one into a carousel" to the board?`, `Add a task to turn one of the reels from "${fresh.Task}" into a carousel, and tell me the steps I'll take in Claude.`, 1, fresh.url, "CarouselAsked"];
+    return n ? [`I've got ${n} ${n===1?"edit":"edits"} waiting on your okay. Give me the yes and I'll finish ${n===1?"it":"them"} up.`, "What do you need from me to finish the edits waiting on my yes?", 3] : ["My timeline's clear. Send me your newest clip whenever you're ready.", "I want to edit my newest video. Tell me exactly what to attach.", 0]; },
+  "Newsletter & Email Manager": d => [d.day === 4 || d.day === 5 ? "Newsletter day is coming up. Want me to draft this week's email from what you posted?" : "Your list is your audience you own. Want a welcome email for new subscribers?", d.day === 4 || d.day === 5 ? "Write this week's newsletter from what I posted this week: subject line, preview text and the email." : "Write a welcome email for my new subscribers: subject line, preview text and the email.", 1],
+  "Creative Director": d => ["I have a few ideas for your next carousel cover. Want to see them?", "Give me 3 cover ideas for my next carousel in my brand colors.", 0],
+  "Life Coach": d => (d.needs.length + d.prog.length) >= 6 ? ["You've been carrying a lot this week. Want to take five minutes and reset together?", "I need a reset. Help me slow down and plan a balanced rest of the week.", 2]
+    : [CONFIG.faith ? "Just checking on you. How's your heart this week?" : "Just checking on you. How are you really doing this week?", "Here's how I'm really doing this week:", 0]
+};
+
+/* ---------- talk to your team ---------- */
+let sample = null;
+const CHAT = {}, DRAFT = {}, BUSY = {}, CTL = {}, PICS = {};
+let canImg = false;
+function md(s){ return esc(s).replace(/\*\*([^*\n]+)\*\*/g, "<b>$1</b>").replace(/(^|\n)#{1,6}\s*/g, "$1").replace(/(^|\n)\s*[*-]\s+/g, "$1• ").replace(/\*([^*\n]+)\*/g, "$1"); }
+function readPic(f){ return new Promise((ok, no) => { const r = new FileReader(); r.onload = () => ok({blob:f, url:r.result}); r.onerror = no; r.readAsDataURL(f); }); }
+const SUGS = {
+  "Chief of Staff": ["What should I focus on today?", "Plan my week"],
+  "Content Strategist": ["Write captions for my latest reel", "3 Reel ideas for this week"],
+  "Social Media Manager": ["What should I post this week?", "Best times to post"],
+  "Newsletter & Email Manager": ["Write a welcome email for new subscribers", "5 subject lines for this week's newsletter"],
+  "YouTube Producer": ["5 YouTube video ideas", "Outline my first video"],
+  "Video Editor": ["Edit my newest raw clip", "Make 3 versions of my last reel"],
+  "Creative Director": ["Carousel style for my next post", "Thumbnail ideas"],
+  "Life Coach": ["Help me plan a balanced week", "I need a Sunday reset"]
+};
+const ACTION = {
+  "Chief of Staff": ["Brief me", "Brief me for today."],
+  "Content Strategist": ["Request hooks", "Give me 10 new hooks for this week. Mix Reels, B-roll and carousels."],
+  "Social Media Manager": ["Review my analytics", "I want you to review my Instagram analytics. Tell me exactly which screenshots to take, and I'll attach them here with the 📎 button."],
+  "Newsletter & Email Manager": ["Write this week's newsletter", "Write this week's newsletter from what I posted this week: subject line, preview text and the email, in my voice, ending with one clear call to action."],
+  "YouTube Producer": ["Plan a YouTube video", "Plan one YouTube video for me: 3 title options, the hook for the first 30 seconds and a simple outline."],
+  "Video Editor": ["Edit my newest video", "I want to edit my newest video. Tell me exactly what to attach and which Studio picks to paste."],
+  "Creative Director": ["Style my next post", "Give me a visual direction for my next post: layout, colors from my brand, fonts and the cover text."],
+  "Life Coach": ["I need encouragement", "I need some encouragement today."]
+};
+const VOICE = {
+  "Chief of Staff": "Calm, organized and steady, like a trusted assistant who has it handled. Starts with the point. Uses phrases like 'Here's the plan' and 'I've got you'. No emoji.",
+  "Content Strategist": "Bubbly, creative and quick. Gets excited about good ideas ('ooh, this one's good'). Uses at most one emoji.",
+  "Social Media Manager": "Straight-shooting and data-minded. Clear, practical, a little witty. Says what's working and what isn't without fluff.",
+  "Newsletter & Email Manager": "Warm storyteller with a marketer's instinct. Writes like a letter to a friend, short paragraphs, one clear call to action. One emoji max.",
+  "YouTube Producer": "Laid-back producer vibe. Big-picture, story-focused, talks in 'episodes' and 'hooks'.",
+  "Video Editor": "Detail-focused and a little playful about edits ('give me 5 minutes with that clip'). Precise about what they need from you.",
+  "Creative Director": "Artsy and visual. Describes things in colors, textures and moods. Confident taste.",
+  "Life Coach": CONFIG.faith ? "Gentle, wise and faith-filled. Slow and kind, may share a short scripture when it fits, never preachy." : "Gentle, wise and grounded. Slow and kind, asks good questions, never preachy."
+};
+const BRAND = CONFIG.brandSummary;
+const PILLARS = CONFIG.pillars;
+const ROOM = ["Content Strategist","Social Media Manager","Me"];
+function rules(e, nick){
+  const extra = e.n === "Life Coach"
+    ? "You are a coach, not a therapist. If they mention a crisis or thoughts of harming themselves, gently encourage them to reach out to someone they trust or call or text 988, and keep a caring tone."
+    : e.n === "Video Editor"
+    ? "The real editing happens in a Claude chat, not on this page. When she tells you about videos to edit (one reel or a batch), add it to the board as status In progress with a short task title like \"Batch edit 6 reels\", then give her exactly these steps: 1. Open the Studio and tap Copy my picks. 2. Open a new Claude chat, attach the videos (up to 3 at a time on a phone) and paste the picks. 3. Add \"Edit all of these the same way\" for a batch. Say you'll take it from there in that chat, and that she taps Done on the task (or tells you) when the videos are finished. You can plan edits here: suggest the hook, look, effects and B-roll from what she describes or from a screenshot. If she says edits are finished, congratulate her and use status Done."
+    : "";
+  return `You are ${nick}, the ${e.n} (${e.role}) on ${CONFIG.creator}'s Brand Dream Team, a team of 8 AI employees.\nYour personality: ${VOICE[e.n] || "warm and friendly"} Stay in this voice so you sound like a real person, different from your teammates.
+What you do: ${e.d.replace("{nick}", nick)} ${e.l.join("; ")}.
+${BRAND}
+${extra}
+How to answer: reply to ${CONFIG.creator} like a real teammate texting back. Use their name sometimes, not every time. Short: 2-6 sentences or a short list. Do the work right in your reply when it's writing work (hooks, captions, ideas, scripts, plans, prayers, encouragement). Never invent statistics, never quote other creators, never claim you posted, sent or edited anything. If you need something only they can give (footage, account access, analytics), say what you need; she can attach screenshots with the 📎 button next to the message box.
+When they attach screenshots, read the real numbers in them and name the key ones in your reply (they won't be re-sent later in this chat). Only use numbers you can actually see.
+Formatting: write plain text like a text message. No markdown: never use asterisks, pound signs, bold or headings. For a list, start each line with •.
+At the very end of EVERY reply, add one line exactly like this, with valid JSON and nothing after it:
+<save>{"task":"short task title","status":"Done or In progress or To do","hooks":[{"hook":"...","for":"Reel or B-roll or Carousel"}],"ideas":[{"idea":"...","format":"Reel or B-roll reel or Carousel","pillar":"${PILLARS.join(" or ")}","notes":"one line"}],"caption":{"title":"...","text":"..."},"captions":[{"title":"...","text":"..."}]}</save>
+${ctx(e)}
+Only include hooks, ideas, caption or captions when you actually wrote them. Use "captions" (a list) when you write captions for several videos at once. status is "Done" when you finished it in this reply, "In progress" when they're about to do it with you in a Claude edit chat, "To do" when it still needs video editing, posting, account data or anything you can't do here. For simple conversation with no task, use {"task":"","status":"Done"}.`;
+}
+function ctx(e){
+  const t = (state.tasks || []).map(r => `- ${r.Task} (${val(r,"Employee") || "unassigned"}, ${val(r,"Status")})`).slice(0, 40).join("\n");
+  const h = (state.hooks || []).map(r => `- ${r.Hook} [${val(r,"Status")}]`).slice(0, 60).join("\n");
+  const l = (state.lib || []).map(r => `- ${r.Title} (${val(r,"Status")})`).slice(0, 30).join("\n");
+  const today = new Date().toLocaleDateString([], {weekday:"long", month:"long", day:"numeric"});
+  if (e.n === "Chief of Staff") return `Today is ${today}. Their current boards:
+TASKS:\n${t || "- none"}\nHOOKS:\n${h || "- none"}\nPOSTS:\n${l || "- none"}
+When they ask to be briefed, give a short briefing: the 3 things to focus on today (Needs your yes first, then In progress, then To do; mention posts Ready to post), what's done, how many New hooks are waiting, and ${CONFIG.faith ? "one warm faith-first line" : "one warm, encouraging line"}. Also add to the save JSON: "briefing":{"title":"Morning briefing · ${today}","focus":["...","...","..."],"summary":"3 to 5 short lines"} and use task "".`;
+  if (e.n === "Newsletter & Email Manager") return `Today is ${today}. Posts in the Content Library (use these as the week's material for the newsletter):\n${l || "- none"}\nAlways give: subject line, preview text, then the email. Short paragraphs, one call to action. The creator sends it from their own email tool (for example Stan, Flodesk, Kit or Mailchimp); never claim to have sent it.`;
+  if (e.n === "Content Strategist" || e.n === "Social Media Manager") return `Hooks already in their Hook Bank (never repeat these):\n${h || "- none"}`;
+  return "";
+}
+function visible(text){ const i = text.indexOf("<save"); return (i >= 0 ? text.slice(0, i) : text).trim(); }
+function chatUI(e, nick){
+  if (!sample) return "";
+  const log = CHAT[e.n] || [];
+  const bubbles = log.map(m => m.who === "saved" ? `<span class="saved${m.warn ? " warn" : ""}">${esc(m.text)}</span>` : `<div class="bub ${m.who}">${m.pics ? `<div class="shots">${m.pics.map(u => `<img src="${u}" alt="Screenshot">`).join("")}</div>` : ""}${m.who === "emp" ? md(m.text) : esc(m.text)}</div>`).join("");
+  const act = ACTION[e.n];
+  const main = act ? `<button class="btn dark mainact" type="button" data-sug="${esc(e.n)}" data-text="${esc(act[1])}"${BUSY[e.n] ? " disabled" : ""}>${esc(act[0])}</button>` : "";
+  const sugs = log.length ? "" : `<div class="sugs">${(SUGS[e.n]||[]).filter(s => !act || s !== act[1]).map(s=>`<button type="button" data-sug="${esc(e.n)}" data-text="${esc(s)}">${esc(s)}</button>`).join("")}</div>`;
+  return `${main}<div class="chat"><span class="lbl">Give ${esc(nick)} a task</span>
+    <div class="log" id="log-${e.i}">${bubbles}</div>${sugs}
+    ${(PICS[e.n] || []).length ? `<div class="pics">${PICS[e.n].map((p, k) => `<div class="pic"><img src="${p.url}" alt="Screenshot ${k+1}"><button type="button" data-unpic="${esc(e.n)}" data-k="${k}" aria-label="Remove screenshot">×</button></div>`).join("")}</div>` : ""}
+    <form class="ask" data-ask="${esc(e.n)}">${canImg ? `<label class="clip" title="Attach screenshots" aria-label="Attach screenshots">📎<input type="file" accept="image/*" multiple data-pics="${esc(e.n)}"></label>` : ""}<textarea id="ask-${e.i}" rows="1" placeholder="Ask ${esc(nick)}…" data-draft="${esc(e.n)}">${esc(DRAFT[e.n] || "")}</textarea>
+    <button class="btn dark" type="submit"${BUSY[e.n] ? " disabled" : ""}>${BUSY[e.n] ? "…" : "Send"}</button></form></div>`;
+}
+function sampleErr(e){
+  const c = e && e.code;
+  if (c === "not_granted") return "Claude needs your OK to let your team answer here. Tap Allow when Claude asks.";
+  if (c === "rate_limited" || c === "queue_overflow") return "Your team is busy for a moment. Try again in a minute.";
+  if (c === "session_expired") return "Your Claude sign-in expired. Reload the page and sign in.";
+  if (c === "sampling_disabled" || c === "capability_disabled") return "Quick replies aren't available in this view. Ask in Claude instead.";
+  if (c === "cancelled") return "Stopped.";
+  return "That didn't go through. Try sending it again.";
+}
+async function saveWork(e, nick, data){
+  if (!db || !data) return [];
+  const notes = [], now = () => new Date().toISOString();
+  const add = (c, row) => db.collection(c).add({...row, Created: now()});
+  const from = ROOM.includes(e.n) ? e.n : "Me";
+  const jobs = [];
+  if (Array.isArray(data.hooks) && data.hooks.length) {
+    jobs.push((async () => { for (const h of data.hooks.slice(0,25)) await add(COL.hooks, {Hook:String(h.hook||"").slice(0,300), For:["Reel","B-roll","Carousel","YouTube"].includes(h.for)?h.for:"Reel", From:from, Status:"New"}); })()
+      .then(()=>notes.push(`${data.hooks.length} hooks saved to the Hook Bank`)));
+  }
+  if (Array.isArray(data.ideas) && data.ideas.length) {
+    jobs.push((async () => { for (const i of data.ideas.slice(0,20)) await add(COL.ideas, {Idea:String(i.idea||"").slice(0,300), Format:["Reel","B-roll reel","Carousel","YouTube"].includes(i.format)?i.format:"Reel", Pillar:PILLARS.includes(i.pillar)?i.pillar:PILLARS[0], Status:"Idea", Notes:String(i.notes||"").slice(0,500)}); })()
+      .then(()=>notes.push(`${data.ideas.length} ideas saved`)));
+  }
+  if (Array.isArray(data.captions) && data.captions.length) {
+    jobs.push((async () => { for (const c of data.captions.slice(0,12)) if (c && c.text) await add(COL.lib, {Title:String(c.title||"New caption").slice(0,200), Status:"Ready to post", Caption:String(c.text).slice(0,1900)}); })()
+      .then(()=>notes.push(`${data.captions.length} captions saved to the Content Library`)));
+  }
+  if (data.caption && data.caption.text) {
+    jobs.push(add(COL.lib, {Title:String(data.caption.title||"New caption").slice(0,200), Status:"In progress", Caption:String(data.caption.text).slice(0,1900)})
+      .then(()=>notes.push("Caption saved to the Content Library")));
+  }
+  if (data.briefing && Array.isArray(data.briefing.focus)) {
+    const b = data.briefing;
+    jobs.push(add(COL.brief, {Briefing:String(b.title||"Morning briefing").slice(0,200), Focus:b.focus.slice(0,5).map(String).join("\n").slice(0,1900), Summary:String(b.summary||"").slice(0,1900)})
+      .then(()=>notes.push("Briefing saved to the top of your HQ")));
+    jobs.push(db.collection(COL.act).add({"What happened":"Your briefing is ready", Employee:"Chief of Staff", When: now()}));
+  }
+  const task = String(data.task || "").trim();
+  if (task) {
+    const st = ["To do","In progress"].includes(data.status) ? data.status : "Done";
+    jobs.push(add(COL.tasks, {Task:task.slice(0,200), Employee:e.n, Status:st})
+      .then(()=>notes.push(st === "Done" ? "Logged as done" : "Added to the task board")));
+    jobs.push(db.collection(COL.act).add({"What happened": (st === "Done" ? "Finished: " : "Added to the list: ") + task.slice(0,180), Employee:e.n, When: now()}));
+  }
+  const res = await Promise.allSettled(jobs);
+  if (res.some(r => r.status === "rejected")) notes.push("!Some of this didn't save. Ask in Claude to save it.");
+  return notes;
+}
+async function ask(role, text){
+  const e = TEAM.find(x => x.n === role); if (!e || !sample || BUSY[role]) return;
+  const pics = (PICS[role] || []).slice();
+  text = text.trim(); if (!text && !pics.length) return;
+  if (!text) text = "Here are my screenshots.";
+  const nick = nickOf(role);
+  const log = CHAT[role] = CHAT[role] || [];
+  log.push({who:"me", text, pics: pics.length ? pics.map(p => p.url) : null}); DRAFT[role] = ""; PICS[role] = [];
+  const turns = log.filter(m => m.who !== "saved" && !m.wait).map(m => ({role: m.who === "me" ? "user" : "assistant", content: (m.raw || m.text) + (m.pics ? `\n[attached ${m.pics.length} screenshot${m.pics.length === 1 ? "" : "s"}]` : "")})).slice(-12);
+  while (turns.length && turns[0].role !== "user") turns.shift();
+  const reply = {who:"emp", text:"…", wait:true}; log.push(reply);
+  BUSY[role] = true; state.openEmp = role; renderTeam(); scrollLog(e);
+  CTL[role] = new AbortController();
+  try {
+    const out = await sample([{role:"user", content: rules(e, nick)}, ...turns], {
+      cache:false, signal: CTL[role].signal,
+      ...(pics.length ? {images: pics.map(p => p.blob)} : {}),
+      onText: ({text}) => { reply.wait = false; reply.text = visible(text) || "…"; const box = document.getElementById("log-" + e.i); const last = box && box.querySelector(".bub.emp:last-of-type"); if (last) { last.innerHTML = md(reply.text); last.classList.remove("wait"); box.scrollTop = box.scrollHeight; } }
+    });
+    reply.wait = false; reply.raw = out.text; reply.text = visible(out.text) || "Done!";
+    let data = null; const m = out.text.match(/<save>([\s\S]*?)<\/save>/);
+    if (m) { try { data = JSON.parse(m[1]); } catch(_) {} }
+    BUSY[role] = false; renderTeam(); scrollLog(e);
+    const notes = await saveWork(e, nick, data);
+    notes.forEach(n => log.push({who:"saved", text: n.replace(/^!/, ""), warn: n.startsWith("!")}));
+  } catch(err) {
+    reply.wait = false; reply.text = (err && err.text ? visible(err.text) + "\n\n" : "") + sampleErr(err);
+  } finally { BUSY[role] = false; renderTeam(); scrollLog(e); }
+}
+function scrollLog(e){ const b = document.getElementById("log-" + e.i); if (b) b.scrollTop = b.scrollHeight; }
+
+function renderAll(){ renderCheckins(); renderBrief(); renderTeam(); renderFeed(); renderBoard(); renderHooks(); renderLib(); renderIdeas(); }
+
+/* ---------- connection + errors ---------- */
+function banner(html){ const b = $("banner"); if (!html) { b.hidden = true; return; } b.innerHTML = html; b.hidden = false; }
+function errCopy(e){
+  const c = e && e.code;
+  if (c === "quota_exceeded") return "Your HQ is full. Ask Claude to clear out old activity.";
+  if (c === "resource_exhausted") return "Lots happening at once. Try again in a minute.";
+  if (c === "revoked" || c === "not_granted" || c === "capability_disabled") return "Open this page in Claude to see your HQ.";
+  return "Couldn't load this right now. Try Refresh.";
+}
+const SECT = {team:["teamErr",()=>{renderTeam();renderFeed();renderBrief();}], tasks:["tasksErr",renderBoard], hooks:["hooksErr",renderHooks], lib:["libErr",renderLib], ideas:["ideasErr",renderIdeas], brief:[null,renderBrief], act:["actErr",renderFeed]};
+function setSecErr(key, msg){
+  const id = SECT[key][0];
+  if (!id) { if (msg) $("briefBody").innerHTML = `<div class="err">${esc(msg)}</div>`; return; }
+  const el = $(id); el.hidden = !msg; el.textContent = msg || "";
+}
+function stamp(){ $("syncTxt").textContent = "Up to date " + new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"}); }
+
+const unsubs = [];
+function queries(){
+  return {
+    tasks: db.collection(COL.tasks).orderBy("Created"),
+    hooks: db.collection(COL.hooks).orderBy("Created"),
+    lib:   db.collection(COL.lib).orderBy("Created", "desc").limit(100),
+    ideas: db.collection(COL.ideas).orderBy("Created", "desc").limit(100),
+    brief: db.collection(COL.brief).orderBy("Created", "desc").limit(1),
+    act:   db.collection(COL.act).orderBy("When", "desc").limit(12),
+    team:  db.collection(COL.team)
+  };
+}
+function watchAll(){
+  unsubs.splice(0).forEach(u => { try { u(); } catch(e){} });
+  const q = queries();
+  const slow = setTimeout(() => { if (Object.keys(q).some(k => state[k] === null)) banner("Your HQ is taking a moment to load. It will fill in on its own."); }, 10000);
+  Object.keys(q).forEach(key => {
+    unsubs.push(q[key].onSnapshot(snap => {
+      let rows = snap.docs.map(d => ({...d.data(), url: COL[key] + "/" + d.id, _id: d.id}));
+      if (key === "hooks") rows = rows.map((r, i) => ({...r, No: i + 1}));
+      if (key === "act") rows = rows.map(r => ({...r, When: r.When || r.Created}));
+      state[key] = rows;
+      if (!snap.metadata.fromCache && Object.keys(q).every(k => state[k] !== null)) { clearTimeout(slow); banner(""); }
+      setSecErr(key, ""); stamp();
+      if (key === "tasks") renderTeam();
+      SECT[key][1]();
+      renderCheckins();
+      tidy();
+    }, err => {
+      if (state[key] === null) state[key] = [];
+      setSecErr(key, errCopy(err)); SECT[key][1]();
+    }));
+  });
+}
+
+/* ---------- keep check-ins fresh: on a timer, and whenever you come back to the page ---------- */
+let hiddenAt = 0;
+setInterval(() => { if (!document.hidden) renderCheckins(); }, 5 * 60 * 1000);
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) { hiddenAt = Date.now(); return; }
+  if (db && hiddenAt && Date.now() - hiddenAt > 2 * 60 * 1000) watchAll(); else renderCheckins();
+  hiddenAt = 0;
+});
+
+/* ---------- writes ---------- */
+async function setProp(url, key, prop, value, okMsg){
+  const row = (state[key] || []).find(r => r.url === url); if (!row) return;
+  const prev = state.override[url] ? {...state.override[url]} : null;
+  state.override[url] = {...(state.override[url] || {}), [prop]: value};
+  state.busy[url] = true; state.open = null; renderAll();
+  try {
+    await db.doc(url).update({[prop]: value});
+    row[prop] = value; delete state.override[url];
+    setSecErr(key, "");
+  } catch(e) {
+    if (prev) state.override[url] = prev; else delete state.override[url];
+    setSecErr(key, errCopy(e));
+  } finally { delete state.busy[url]; renderAll(); }
+}
+
+document.addEventListener("click", async ev => {
+  const t = ev.target.closest("button, .task");
+  if (!t) return;
+  if (t.dataset.unpic) { const r = t.dataset.unpic; (PICS[r] || []).splice(+t.dataset.k, 1); renderTeam(); return; }
+  if (t.id === "refresh") { if (db) { $("syncTxt").textContent = "Refreshing…"; watchAll(); } return; }
+  if (t.dataset.ctx) {
+    ev.stopPropagation();
+    const task = (state.tasks || []).find(r => r.url === t.dataset.ctx); if (!task) return;
+    const who = val(task,"Employee"); const role = TEAM.some(x => x.n === who) ? who : "Chief of Staff";
+    state.open = null; state.openEmp = role; renderBoard(); renderTeam();
+    const card = document.querySelector(`details.emp[data-emp="${role}"]`); if (card) card.scrollIntoView({behavior:"smooth", block:"start"});
+    ask(role, `About the task "${task.Task}" on my board (${val(task,"Status")}): I don't remember the details. Remind me in plain words what this is and why it matters, then list exactly what you need from me to finish it (files, a yes, an answer, a decision), and what you'll do once I give it to you. This is just a question: don't add a new task or save anything.`);
+    return;
+  }
+  if (t.dataset.alldone) { state.allDone = true; renderBoard(); return; }
+  if (t.dataset.move) { ev.stopPropagation(); if (db) { setProp(t.dataset.move, "tasks", "Status", t.dataset.to); if (t.dataset.to === "Done") db.doc(t.dataset.move).update({DoneAt: nowISO()}).catch(()=>{}); } return; }
+  if (t.dataset.hook) {
+    const h = (state.hooks || []).find(r => r.url === t.dataset.hook);
+    if (h && db) { const nu = (val(h,"Status") === "Used") ? "New" : "Used"; setProp(h.url, "hooks", "Status", nu); if (nu === "Used") db.doc(h.url).update({UsedAt: nowISO()}).catch(()=>{}); }
+    return;
+  }
+  if (t.dataset.rename) { state.renaming = t.dataset.rename; state.openEmp = t.dataset.rename; renderTeam(); const inp = document.querySelector(`[data-rename-form] input`); if (inp) { inp.focus(); inp.select(); } return; }
+  if (t.dataset.renameCancel) { state.renaming = null; renderTeam(); return; }
+  if (t.dataset.ci) {
+    const role = t.dataset.ci; state.openEmp = role; DRAFT[role] = t.dataset.text || ""; renderTeam();
+    if (t.dataset.flag && t.dataset.fk && db) db.doc(t.dataset.flag).update({[t.dataset.fk]: true}).catch(()=>{});
+    const card = document.querySelector(`details.emp[data-emp="${role}"]`); if (card) card.scrollIntoView({behavior:"smooth", block:"start"});
+    setTimeout(() => { const e = TEAM.find(x => x.n === role); const ta = e && $("ask-" + e.i); if (ta) ta.focus(); }, 350);
+    return;
+  }
+  if (t.dataset.sug) { ask(t.dataset.sug, t.dataset.text); return; }
+  if (t.dataset.quick) {
+    const q = {brief:["Chief of Staff","Brief me for today."], hooks:["Content Strategist","Give me 10 new hooks for this week. Mix Reels, B-roll and carousels."], hope:["Life Coach","I need some encouragement today."]}[t.dataset.quick];
+    state.openEmp = q[0]; renderTeam();
+    const card = document.querySelector(`details.emp[data-emp="${q[0]}"]`); if (card) card.scrollIntoView({behavior:"smooth", block:"start"});
+    ask(q[0], q[1]); return;
+  }
+  if (t.dataset.posted) { if (db) setProp(t.dataset.posted, "lib", "Status", "Posted"); return; }
+  if (t.dataset.copy) {
+    const p = (state.lib || []).find(r => r.url === t.dataset.copy); if (!p) return;
+    try { await navigator.clipboard.writeText(p.Caption || ""); t.textContent = "Copied"; setTimeout(()=>{ t.textContent = "Copy caption"; }, 1600); }
+    catch(e) { const para = t.closest("article").querySelector("p"); const r = document.createRange(); r.selectNodeContents(para); const s = getSelection(); s.removeAllRanges(); s.addRange(r); t.textContent = "Selected, tap Copy"; }
+    return;
+  }
+  if (t.dataset.task) { state.open = state.open === t.dataset.task ? null : t.dataset.task; renderBoard(); }
+});
+document.addEventListener("change", async ev => {
+  const t = ev.target; if (!t.dataset || !t.dataset.pics) return;
+  const role = t.dataset.pics;
+  const files = [...(t.files || [])].filter(f => f.type.startsWith("image/")).slice(0, 6);
+  if (!files.length) return;
+  try { const items = await Promise.all(files.map(readPic)); PICS[role] = (PICS[role] || []).concat(items).slice(0, 6); } catch(_) {}
+  state.openEmp = role; renderTeam();
+});
+document.addEventListener("input", ev => { const t = ev.target; if (t.dataset && t.dataset.draft) { DRAFT[t.dataset.draft] = t.value; t.style.height = "auto"; t.style.height = Math.min(t.scrollHeight, 140) + "px"; } });
+document.addEventListener("keydown", ev => {
+  const t = ev.target;
+  if (t.dataset && t.dataset.draft && ev.key === "Enter" && !ev.shiftKey && !ev.isComposing) { ev.preventDefault(); ask(t.dataset.draft, t.value); }
+});
+document.addEventListener("submit", ev => {
+  const a = ev.target.closest("[data-ask]");
+  if (a) { ev.preventDefault(); ask(a.dataset.ask, a.querySelector("textarea").value); return; }
+  const f = ev.target.closest("[data-rename-form]"); if (!f) return;
+  ev.preventDefault();
+  const role = f.dataset.renameForm;
+  const name = f.querySelector("input").value.trim().slice(0, 24);
+  const row = teamRow(role);
+  state.renaming = null;
+  if (!name || !db || name === nickOf(role)) { renderTeam(); return; }
+  state.override["team/" + slug(role)] = {Nickname: name}; renderTeam();
+  db.doc("team/" + slug(role)).set({Name: role, Nickname: name}).catch(e => { delete state.override["team/" + slug(role)]; setSecErr("team", errCopy(e)); renderTeam(); });
+});
+document.addEventListener("toggle", ev => {
+  const d = ev.target; if (!d.matches || !d.matches("details.emp")) return;
+  if (d.open) state.openEmp = d.dataset.emp; else if (state.openEmp === d.dataset.emp) state.openEmp = null;
+}, true);
+document.addEventListener("keydown", ev => {
+  if ((ev.key === "Enter" || ev.key === " ") && ev.target.dataset && ev.target.dataset.task) { ev.preventDefault(); ev.target.click(); }
+});
+
+/* ---------- boot ---------- */
+renderAll();
+(async () => {
+  try { sample = window.claude ? await window.claude.use("sample") : null; } catch(e) { sample = null; }
+  if (sample) { try { const l = await sample.limits(); canImg = !!(l && l.images); } catch(_) { canImg = false; } renderTeam(); }
+})();
+(async () => {
+  try { db = window.claude ? await window.claude.use("db") : null; } catch(e) { db = null; }
+  if (!db) {
+    $("syncTxt").textContent = "Not connected";
+    banner("<b>Open this page in Claude to see your HQ.</b> <span>Your team, tasks, hooks and posts are saved here and update when you ask Claude.</span>");
+    ["tasks","hooks","lib","ideas","brief","act","team"].forEach(k => { state[k] = []; });
+    renderAll();
+    return;
+  }
+  renderTeam();
+  watchAll();
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,92 @@
+[
+ {
+  "id": "P1",
+  "name": "Guided Blush",
+  "desc": "Soft blush and rose with clean black and white.",
+  "swatches": [
+   "#F5BACB",
+   "#E9A3C0",
+   "#FFFFFF",
+   "#0A0A0A"
+  ],
+  "accent": "#F5BACB",
+  "on_accent": "#0A0A0A",
+  "accent_on_dark": "#F5BACB",
+  "ghost": "#F5BACB"
+ },
+ {
+  "id": "P2",
+  "name": "Sky & Cherry",
+  "desc": "Powder sky blue and deep cherry with tan and soft ink.",
+  "swatches": [
+   "#B3C1D6",
+   "#7A1622",
+   "#E6D8C4",
+   "#3A3030"
+  ],
+  "accent": "#B3C1D6",
+  "on_accent": "#3A3030",
+  "accent_on_dark": "#B3C1D6",
+  "ghost": "#8E1C28"
+ },
+ {
+  "id": "P3",
+  "name": "Ballet",
+  "desc": "Muted mauve and rose with soft cream and charcoal.",
+  "swatches": [
+   "#A06A6F",
+   "#C79A97",
+   "#F3E4DD",
+   "#2F3338"
+  ],
+  "accent": "#A06A6F",
+  "on_accent": "#FFFFFF",
+  "accent_on_dark": "#C79A97",
+  "ghost": "#874F55"
+ },
+ {
+  "id": "P4",
+  "name": "Velvet Rose",
+  "desc": "Dusty rose and blush with deep oxblood and plum.",
+  "swatches": [
+   "#DC9090",
+   "#EBB9B9",
+   "#3F0000",
+   "#2B0730"
+  ],
+  "accent": "#DC9090",
+  "on_accent": "#2B0730",
+  "accent_on_dark": "#EBB9B9",
+  "ghost": "#6E0F1A"
+ },
+ {
+  "id": "P5",
+  "name": "Newspaper Red",
+  "desc": "Deep oxblood red with grey, paper cream and ink black.",
+  "swatches": [
+   "#6C2424",
+   "#B4B4B4",
+   "#ECE8E0",
+   "#1A1A1A"
+  ],
+  "accent": "#6C2424",
+  "on_accent": "#ECE8E0",
+  "accent_on_dark": "#ECE8E0",
+  "ghost": "#8E2E2E"
+ },
+ {
+  "id": "P6",
+  "name": "Bubblegum",
+  "desc": "Pink on pink, from hot pink to soft blush and white.",
+  "swatches": [
+   "#FF69B4",
+   "#FF9CCE",
+   "#FFCFE7",
+   "#FFFFFF"
+  ],
+  "accent": "#FF69B4",
+  "on_accent": "#1A1A1A",
+  "accent_on_dark": "#FF9CCE",
+  "ghost": "#FF69B4"
+ }
+]
