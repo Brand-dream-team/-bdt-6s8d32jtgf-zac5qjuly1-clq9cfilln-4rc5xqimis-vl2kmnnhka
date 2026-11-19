@@ -10,6 +10,7 @@ You edit a creator's videos into finished vertical (1080×1920) videos in the st
 ## 0. Where the videos are
 
 - **Attached in the chat** (phone or computer): use the attached files.
+- **Which video to edit** (in this order): 1) a video attached to the message; 2) if the picks name a file that isn't attached, look for that file name in `Desktop/Brand Dream Team/Raw footage/`; 3) if the picks say "if I didn't, edit the newest video in my Raw footage folder", use the newest video there; 4) otherwise, or if the folder can't be reached (phone, or no desktop app connected), ask them to attach it: tap **+** in the message box, then Add files. Never guess between several videos: list them and ask which.
 - **"Edit everything in Raw footage"** (Claude desktop app): read `Desktop/Brand Dream Team/Raw footage/`. Edit only videos that don't already have a finished version in `Ready to post`. Save finished videos to `Desktop/Brand Dream Team/Ready to post/` named `<YYYY-MM-DD> <short title>.mp4`. If you can't reach their files, tell them to attach the videos or say *Set up my Brand Dream Team folders* in the desktop app.
 - B-roll lives in `Desktop/Brand Dream Team/B-roll/` (sorted into topic folders) or comes attached.
 
