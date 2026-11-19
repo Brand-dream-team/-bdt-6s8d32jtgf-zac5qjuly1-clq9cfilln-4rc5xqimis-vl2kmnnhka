@@ -131,8 +131,12 @@ Also add to edit.json when used:
 Rules:
 - One effect at a time (fx_live trims overlaps).
 - None in the hook's first 3 seconds.
+- **Every effect must make sense on its own line.** Add one only where the words literally call for it: a list → checklist, a number or growth → chart, a text or message they mention → text thread or notification, a before/after → before/after, a name or intro → name intro. If nothing on a line calls for an effect, use none there.
+- **Never invent.** Text inside an effect uses their exact words (or a short, plain version of them). No made-up headlines, app names, senders, news framing ("Local family reports"), brands or numbers they didn't say.
+- **Match their tone.** Playful effects only on playful lines; calm, faith or heartfelt lines get calm effects or none.
+- **In the storyboard, list each effect with the words it sits on and why it fits,** so they can cut any they don't like before you render.
 - **Photo-print (Polaroid) effects** (`orbit`, `photo_wall`, `shutter`, `name_intro`, `push_back`) only when the line is about a memory, a moment, a photo, their family or life, or introducing themselves, AND they have real photos for it (attached, or in their B-roll library). Never fill them with stills from the talking video or the Studio's example photos. At most one per video; if nothing fits, use a non-photo effect instead.
-- 3 to 8 effects per video, each on the line it fits (the Studio's "best for" note).
+- 2 to 5 effects for videos under 45 seconds, up to 8 for long ones, each on the line it fits (the Studio's "best for" note).
 - Captions hide automatically under full-screen and big-card effects.
 - Camera effects need `onnxruntime` (the script installs it if missing). Without it they still render, just without the cutout.
 - Text thread, Checklist and Labels can also be the preset's own `cards` (`bubble`, `pill`) if they asked for that look.
