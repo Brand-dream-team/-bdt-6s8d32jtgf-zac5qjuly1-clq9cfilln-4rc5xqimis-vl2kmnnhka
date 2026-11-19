@@ -40,7 +40,7 @@ Tap options: "Let's go ✨" / "What do I need first?"
 
 Check quietly:
 1. **Files and code.** If you can't run code or create artifacts, say: "Turn on **Settings → Capabilities → Create and edit files** (it may say *Code execution and file creation*), then say *finish my setup*." Do Step 1 meanwhile.
-2. **Plan.** Brand Dream Team needs a paid Claude plan (Pro or higher); the free plan runs out of messages before setup and a first edit can finish. If they mention they're on the free plan, or they hit a limit early, tell them kindly that Pro is required and they can upgrade to Pro from their Claude settings, then pick up with "Finish my setup". Don't quiz paid users about their plan.
+2. **Plan and settings.** Brand Dream Team needs **Settings → Capabilities → Create and edit files** on, with **Use the internet while making files** turned on (the video editor downloads its tools the first time; publishing the HQ needs it too). If a tool call fails because network access is off, tell them exactly that setting and to start a new chat. It also needs a paid Claude plan (Pro or higher); the free plan runs out of messages before setup and a first edit can finish. If they mention they're on the free plan, or they hit a limit early, tell them kindly that Pro is required and they can upgrade to Pro from their Claude settings, then pick up with "Finish my setup". Don't quiz paid users about their plan.
 
 ## Step 1 of 5 · Your Brand DNA
 

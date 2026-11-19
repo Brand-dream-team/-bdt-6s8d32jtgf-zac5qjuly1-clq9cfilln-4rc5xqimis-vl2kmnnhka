@@ -5,7 +5,7 @@ description: Use when a Brand Dream Team creator says "upgrade me", "update me",
 
 # Upgrade me
 
-Current version: **1.0.1** (the `version` in this plugin's `.claude-plugin/plugin.json`).
+Current version: **1.0.2** (the `version` in this plugin's `.claude-plugin/plugin.json`).
 
 The creator never deletes files or re-uploads anything. Keep every step short and friendly.
 
@@ -22,7 +22,7 @@ If you can't find their HQ, ask them to paste their HQ link.
 
 If saving over their HQ is refused (for example "network access is off" or "can't change an artifact from another chat"), don't make a second HQ. Tell them, in one short message:
 1. Open their HQ (give them the link) and start a chat **from the HQ page**, then say "Upgrade me" there.
-2. Check **Settings → Capabilities**: *Code execution and file creation* on, and network access on (allow all domains). The video editor needs this too, to download its tools the first time.
+2. Turn on **Settings → Capabilities → Create and edit files → Use the internet while making files**, then start a new chat. The video editor needs this too, to download its tools the first time.
 
 ## 3. The Studio
 
