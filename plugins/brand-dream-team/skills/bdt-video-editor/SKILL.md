@@ -131,6 +131,7 @@ Also add to edit.json when used:
 Rules:
 - One effect at a time (fx_live trims overlaps).
 - None in the hook's first 3 seconds.
+- **Photo-print (Polaroid) effects** (`orbit`, `photo_wall`, `shutter`, `name_intro`, `push_back`) only when the line is about a memory, a moment, a photo, their family or life, or introducing themselves, AND they have real photos for it (attached, or in their B-roll library). Never fill them with stills from the talking video or the Studio's example photos. At most one per video; if nothing fits, use a non-photo effect instead.
 - 3 to 8 effects per video, each on the line it fits (the Studio's "best for" note).
 - Captions hide automatically under full-screen and big-card effects.
 - Camera effects need `onnxruntime` (the script installs it if missing). Without it they still render, just without the cutout.
