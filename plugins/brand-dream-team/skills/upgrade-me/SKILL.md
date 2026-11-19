@@ -5,7 +5,7 @@ description: Use when a Brand Dream Team creator says "upgrade me", "update me",
 
 # Upgrade me
 
-Current version: **1.0.0** (the `version` in this plugin's `.claude-plugin/plugin.json`).
+Current version: **1.0.1** (the `version` in this plugin's `.claude-plugin/plugin.json`).
 
 The creator never deletes files or re-uploads anything. Keep every step short and friendly.
 
@@ -20,6 +20,10 @@ Follow the **Update my HQ** row in the brand-dream-team-setup skill: read their 
 
 If you can't find their HQ, ask them to paste their HQ link.
 
+If saving over their HQ is refused (for example "network access is off" or "can't change an artifact from another chat"), don't make a second HQ. Tell them, in one short message:
+1. Open their HQ (give them the link) and start a chat **from the HQ page**, then say "Upgrade me" there.
+2. Check **Settings → Capabilities**: *Code execution and file creation* on, and network access on (allow all domains). The video editor needs this too, to download its tools the first time.
+
 ## 3. The Studio
 
 Nothing to do. The Studio is one shared page that's always the newest version. Their personal Studio link keeps their colors.
@@ -29,4 +33,5 @@ Nothing to do. The Studio is one shared page that's always the newest version. T
 One short message: their version number, what's new (from the list below, newest first), and one thing to try.
 
 ### What's new
+- **1.0.1**: Clearer help if an upgrade can't save, and the Studio's My HQ button now remembers your HQ on your Home Screen.
 - **1.0.0**: First release. One-link install, Upgrade me, and the video editor now takes footage from any camera or phone (DJI, GoPro, iPhone, Android, laptop).
