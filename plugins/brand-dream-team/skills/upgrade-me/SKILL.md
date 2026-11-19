@@ -5,7 +5,7 @@ description: Use when a Brand Dream Team creator says "upgrade me", "update me",
 
 # Upgrade me
 
-Current version: **1.0.5** (the `version` in this plugin's `.claude-plugin/plugin.json`).
+Current version: **1.0.6** (the `version` in this plugin's `.claude-plugin/plugin.json`).
 
 The creator never deletes files or re-uploads anything. Keep every step short and friendly.
 
