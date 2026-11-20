@@ -177,7 +177,7 @@ After the video renders, add sounds with `python3 scripts/sfx.py <project> <out.
 `"sounds": [{"id": "whoosh", "t": 0.0}, {"id": "pop", "at": "exact words"}, {"id": "zoomin", "at": "this changed everything"}]`
 (`at` = their words, found in the finished video, so cuts don't matter; `t` = an exact second.) The 30 sounds are in `sounds/sounds.json`. Their own sounds: if they have a `Sounds` folder (`Desktop/Brand Dream Team/Sounds/`), set `"sounds_dir"` to it and use a file's name as its id.
 
-Sounds follow what happens on screen, never random:
+If the picks say `Sound effects: only use these`, use only those sounds (on the moments they fit, and none where none fits). If they list favorites, use those first. Sounds follow what happens on screen, never random:
 - Hook appears at 0s: `whoosh` (or `glitch` for tech/AI topics). Ending line: `whoosh_out`.
 - A zoom punch: `zoomin` (and `zoomout` when it pulls back). A key word pops in the captions: `pop` or `pop_soft`. A pop-up image or card: `pop_soft` or `drip`.
 - A list or steps: `tick` per item (or `marker` when they're writing or planning). A question to the viewer: `question`.
