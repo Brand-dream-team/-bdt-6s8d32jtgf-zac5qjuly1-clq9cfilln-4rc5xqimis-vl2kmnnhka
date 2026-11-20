@@ -1,0 +1,34 @@
+Brand Dream Team sound pack. Every sound is CC0 1.0 (public domain): free for personal and commercial use, no credit required. Credits, with thanks:
+
+- pop.mp3 (Pop): UI Bubble Pop by Qvantor (Freesound 878245)
+- pop_soft.mp3 (Soft pop): Kenney Interface Sounds
+- tick.mp3 (Tick): Kenney Interface Sounds
+- whoosh.mp3 (Soft whoosh): Broomstick whoosh 2 by Sadiquecat (Freesound 816261)
+- glass.mp3 (Glass ping): UI Hover Glass Ping by Qvantor (Freesound 878247)
+- sparkle.mp3 (Sparkle chime): Success Vibraphone Triad by Qvantor (Freesound 878602)
+- chaching.mp3 (Cha-ching): Cha Ching by deleted_user_96253 (Freesound 351304)
+- notify.mp3 (Notification): Kenney Interface Sounds
+- riser.mp3 (Riser): Reverse Cymbal Shiny by loganzsound (Freesound 774635)
+- tapestop.mp3 (Record stop): Tape stop effect by not_yr (Freesound 680836)
+- buzzer.mp3 (Wrong buzzer): Buzzer sounds by Breviceps (Freesound 493163)
+- boing.mp3 (Boing): 8-Bit Spring Boing by Qvantor (Freesound 878316)
+- rewind.mp3 (Rewind): Tape audio rewinding 2 by LukaCafuka (Freesound 815689)
+- swell.mp3 (Soft swell): Movie Swell 2 by jordivburgel (Freesound 218524)
+- glitch.mp3 (Glitch whoosh): Cyberpunk Glitch Hologram Transition Whoosh by brktkrgll (Freesound 856168)
+- whoosh_out.mp3 (Whoosh out): Freesound, CC0 (see SOURCES)
+- aww.mp3 (Crowd aww): Crowd aah.wav by deleted_user_2104797 (Freesound 324896)
+- crowd.mp3 (Crowd reaction): Small crowd reactions by IENBA (Freesound 488472)
+- bleep.mp3 (Censor bleep): 1003hz Censor beep (bright) by Sadiquecat (Freesound 862299)
+- crumple.mp3 (Paper crumple): PaperCrumpling 2 by lematt (Freesound 725251)
+- marker.mp3 (Marker squeak): marker-whiteboard-squeak01 by newagesoup (Freesound 335956)
+- drip.mp3 (Water drop): cartoon_waterdrop.mp3 by C_Rogers (Freesound 557297)
+- levelup.mp3 (Level up): LevelUp.wav by Kenneth_Cooney (Freesound 609335)
+- coin.mp3 (Coin): 8Bit Coin Collection #2 by Duskbreaker (Freesound 649726)
+- slide.mp3 (Slide whistle): SLIDE WHISTLE - 5 by SamuelGremaud (Freesound 517637)
+- pluck.mp3 (Pluck): Kenney Interface Sounds
+- success.mp3 (Success): Kenney Interface Sounds
+- zoomin.mp3 (Zoom in): Kenney Interface Sounds
+- zoomout.mp3 (Zoom out): Kenney Interface Sounds
+- question.mp3 (Question): Kenney Interface Sounds
+
+Kenney Interface Sounds: www.kenney.nl (CC0). Freesound sounds: each recorded as CC0 1.0 on its Freesound page.

@@ -1,0 +1,152 @@
+[
+ {
+  "id": "pop",
+  "label": "Pop",
+  "use": "a word pops on screen"
+ },
+ {
+  "id": "pop_soft",
+  "label": "Soft pop",
+  "use": "captions, lighter moments"
+ },
+ {
+  "id": "tick",
+  "label": "Tick",
+  "use": "list items, checkmarks"
+ },
+ {
+  "id": "whoosh",
+  "label": "Soft whoosh",
+  "use": "cuts, zooms, text sliding in"
+ },
+ {
+  "id": "glass",
+  "label": "Glass ping",
+  "use": "soft emphasis, faith moments"
+ },
+ {
+  "id": "sparkle",
+  "label": "Sparkle chime",
+  "use": "wins, good news, the result"
+ },
+ {
+  "id": "chaching",
+  "label": "Cha-ching",
+  "use": "money, sales, launches"
+ },
+ {
+  "id": "notify",
+  "label": "Notification",
+  "use": "a text, a DM, a message"
+ },
+ {
+  "id": "riser",
+  "label": "Riser",
+  "use": "building up to the reveal"
+ },
+ {
+  "id": "tapestop",
+  "label": "Record stop",
+  "use": "\u201cwait\u2026\u201d, a plot twist"
+ },
+ {
+  "id": "buzzer",
+  "label": "Wrong buzzer",
+  "use": "\u201cdon't do this\u201d, mistakes"
+ },
+ {
+  "id": "boing",
+  "label": "Boing",
+  "use": "playful, funny moments"
+ },
+ {
+  "id": "rewind",
+  "label": "Rewind",
+  "use": "\u201clet's go back\u201d, a flashback"
+ },
+ {
+  "id": "swell",
+  "label": "Soft swell",
+  "use": "an emotional moment, a testimony"
+ },
+ {
+  "id": "glitch",
+  "label": "Glitch whoosh",
+  "use": "tech, AI, the Studio on screen"
+ },
+ {
+  "id": "whoosh_out",
+  "label": "Whoosh out",
+  "use": "the last line, ending the video"
+ },
+ {
+  "id": "aww",
+  "label": "Crowd aww",
+  "use": "sweet moments, kids, family"
+ },
+ {
+  "id": "crowd",
+  "label": "Crowd reaction",
+  "use": "a surprising fact"
+ },
+ {
+  "id": "bleep",
+  "label": "Censor bleep",
+  "use": "a word you \u201ccan't say\u201d"
+ },
+ {
+  "id": "crumple",
+  "label": "Paper crumple",
+  "use": "throwing out an old idea"
+ },
+ {
+  "id": "marker",
+  "label": "Marker squeak",
+  "use": "writing a list, notes, plans"
+ },
+ {
+  "id": "drip",
+  "label": "Water drop",
+  "use": "a soft, calm pop"
+ },
+ {
+  "id": "levelup",
+  "label": "Level up",
+  "use": "a milestone, a new chapter"
+ },
+ {
+  "id": "coin",
+  "label": "Coin",
+  "use": "a small win, saving money"
+ },
+ {
+  "id": "slide",
+  "label": "Slide whistle",
+  "use": "a funny fail, \u201cand it went downhill\u201d"
+ },
+ {
+  "id": "pluck",
+  "label": "Pluck",
+  "use": "a light, happy note"
+ },
+ {
+  "id": "success",
+  "label": "Success",
+  "use": "done, booked, sold"
+ },
+ {
+  "id": "zoomin",
+  "label": "Zoom in",
+  "use": "punching in on your face"
+ },
+ {
+  "id": "zoomout",
+  "label": "Zoom out",
+  "use": "pulling back out"
+ },
+ {
+  "id": "question",
+  "label": "Question",
+  "use": "asking the viewer something"
+ }
+]

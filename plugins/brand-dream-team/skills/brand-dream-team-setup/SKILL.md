@@ -127,6 +127,7 @@ Triggered by "Set up my Brand Dream Team folders". Only works in the **Claude de
      Raw footage/     talking videos and vlog clips
      B-roll/          clips with no talking
      Ready to post/   finished videos
+     Sounds/          optional: your own sound effects (mp3 or wav)
    ```
    Never move, rename or delete anything that's already there.
 3. Add a short `Start here.txt` in `Brand Dream Team/`: what each folder is for, and "Paste your Studio picks in Claude and say: Edit everything in Raw footage."

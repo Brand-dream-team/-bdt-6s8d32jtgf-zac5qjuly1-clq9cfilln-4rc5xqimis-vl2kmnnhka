@@ -171,6 +171,23 @@ Caps captions 2 to 3 words at a time, pink text on solid black label boxes, cent
 One huge word at a time, tightly spaced, centered above the head (`word_y`, default 440; move it if a frame check shows it on the face). Words in `emphasis` switch to the creator's chosen color (the palette `accent`, or `word_accent` to override) and get a period when a pause follows: pick 4 to 8 punchline words. Hook: `line1` white, `line2` in their color, `dur` about 1.8.
 Optional: `"name_intro": {"at": "hi I'm", "line": "i'm Destiny", "script": "Alexis", "dur": 2.2}` when they introduce themselves (big white line bottom right, script name in their color).
 
+## 5b. Sound effects (on unless the picks say `Sound effects: off`)
+
+After the video renders, add sounds with `python3 scripts/sfx.py <project> <out.mp4> <out.mp4>`, using a `"sounds"` list in edit.json:
+`"sounds": [{"id": "whoosh", "t": 0.0}, {"id": "pop", "at": "exact words"}, {"id": "zoomin", "at": "this changed everything"}]`
+(`at` = their words, found in the finished video, so cuts don't matter; `t` = an exact second.) The 30 sounds are in `sounds/sounds.json`. Their own sounds: if they have a `Sounds` folder (`Desktop/Brand Dream Team/Sounds/`), set `"sounds_dir"` to it and use a file's name as its id.
+
+Sounds follow what happens on screen, never random:
+- Hook appears at 0s: `whoosh` (or `glitch` for tech/AI topics). Ending line: `whoosh_out`.
+- A zoom punch: `zoomin` (and `zoomout` when it pulls back). A key word pops in the captions: `pop` or `pop_soft`. A pop-up image or card: `pop_soft` or `drip`.
+- A list or steps: `tick` per item (or `marker` when they're writing or planning). A question to the viewer: `question`.
+- Money, sales, launches: `chaching` (big) or `coin` (small). Wins and results: `sparkle`, `success` or `levelup`.
+- A text, DM or message: `notify`. "Wait..." or a twist: `tapestop`; "let's go back": `rewind`. Mistakes, "don't do this": `buzzer`; a funny fail: `slide`; playful: `boing`, `pluck`.
+- Sweet, family, kids: `aww`; a surprising fact: `crowd`; a word they "can't say": `bleep`; throwing out an old idea: `crumple`.
+- Building to a reveal: `riser` (ends right on the reveal line). Faith or heartfelt moments: `glass` or `swell`, quietly, or nothing.
+
+Keep it light: about 1 sound every 3 to 5 seconds at most (4 to 8 in a 30-second reel), never two within a second, and none under a sentence that needs to be heard clearly. Calm or faith videos get fewer and softer sounds (`gain` 0.2). Show the sounds in the storyboard with the effects.
+
 ## 6. Check, then deliver
 
 Grab 6 to 8 frames (`ffmpeg -ss <t> -i out.mp4 -frames:v 1 f.png`) and look at them: captions readable and off the face, nothing overlapping, hook not cut off, cards on the right moments. Fix and re-render if needed.
@@ -229,5 +246,4 @@ For "Brand Dream Team: edit my vlog": order clips by when they were filmed, keep
 
 - Never post, upload or send anything for them.
 - Never delete or change their originals.
-- No sound effects (not in this version).
 - If something fails, say what happened in one line and what you'll try next.
