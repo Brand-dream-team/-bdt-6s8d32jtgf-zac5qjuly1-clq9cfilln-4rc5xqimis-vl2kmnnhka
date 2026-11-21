@@ -5,7 +5,7 @@ description: Use when a Brand Dream Team creator says "upgrade me", "update me",
 
 # Upgrade me
 
-Current version: **1.1.1** (the `version` in this plugin's `.claude-plugin/plugin.json`).
+Current version: **1.2.0** (the `version` in this plugin's `.claude-plugin/plugin.json`).
 
 The creator never deletes files or re-uploads anything. Keep every step short and friendly.
 
@@ -33,6 +33,7 @@ Nothing to do. The Studio is one shared page that's always the newest version. T
 One short message: their version number, what's new (from the list below, newest first), and one thing to try.
 
 ### What's new
+- **1.2.0**: New default look, The Original Yap: bold white titles with one italic word in your color, one-word captions under your chin, handwritten pop-ups and sounds on the key moments.
 - **1.0.7**: Sound effects are here: 30 hand-picked sounds (pops, whooshes, dings, cha-ching and more) placed on the right moments, kept light. Turn them on or off in the Studio's Effects tab, or add your own to a Sounds folder.
 - **1.0.1**: Clearer help if an upgrade can't save, and the Studio's My HQ button now remembers your HQ on your Home Screen.
 - **1.0.0**: First release. One-link install, Upgrade me, and the video editor now takes footage from any camera or phone (DJI, GoPro, iPhone, Android, laptop).

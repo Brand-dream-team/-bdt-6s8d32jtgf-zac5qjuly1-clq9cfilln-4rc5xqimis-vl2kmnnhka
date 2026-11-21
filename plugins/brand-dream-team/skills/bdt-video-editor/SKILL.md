@@ -20,7 +20,7 @@ Work in a project folder per video (e.g. `projects/<short-name>/`). Deliver fini
 
 ## 1. Read the picks
 
-Studio picks arrive as lines like `Preset: Pink Pop`, `Colors: Guided Blush (...)`, `Captions: ...`, `Effects: ...`, `Floating cards: ...`, `Post caption: ...`. Follow them. If there are no picks, ask only what's missing with tap options: preset (Soft Glass, Bold Highlight, Pink Pop, Typewriter, Pink Label, Chunky Word) and colors (default: their Brand DNA colors, else Guided Blush). `palettes.json` has every palette's role colors.
+Studio picks arrive as lines like `Preset: Pink Pop`, `Colors: Guided Blush (...)`, `Captions: ...`, `Effects: ...`, `Floating cards: ...`, `Post caption: ...`. Follow them. If there are no picks, ask only what's missing with tap options: preset (The Original Yap, Soft Glass, Bold Highlight, Pink Pop, Typewriter, Pink Label, Chunky Word) and colors (default: their Brand DNA colors, else Guided Blush). `palettes.json` has every palette's role colors.
 
 ## 2. Prepare each video
 
@@ -61,7 +61,8 @@ Read the transcript like an editor and show the storyboard **in chat**: the hook
 
 Build the cut base once per video, then render the preset:
 ```
-python3 scripts/make_base.py "<project>"     # Pink Pop, Typewriter, Pink Label and Chunky Word (Soft Glass / Bold build it themselves)
+python3 scripts/make_base.py "<project>"     # The Original Yap, Pink Pop, Typewriter, Pink Label and Chunky Word (Soft Glass / Bold build it themselves)
+python3 scripts/yap.py "<project>"           # The Original Yap (adds its own sounds)
 python3 scripts/soft_glass.py "<project>"
 python3 scripts/bold_highlight.py "<project>"
 python3 scripts/pinkpop.py "<project>"
@@ -70,6 +71,13 @@ python3 scripts/chunky_word.py "<project>"
 python3 scripts/typewriter.py "<project>/timeline_words.json" "<project>/base.mp4" "<project>/plan.json" "<project>/out/<name>.mp4"
 ```
 Output goes to `<project>/out/`.
+
+### The Original Yap (`yap.py`): the default talking-head look
+`python3 scripts/make_base.py <project>` then `python3 scripts/yap.py <project>` (sounds are added for you; `"sfx": false` turns them off).
+- **Titles** (`"titles"`): the first is the hook, shown 5 to 10 seconds (`"t": 0, "dur": 8`), written from what they say, like "clarity comes from / *moving* your feet...". Then 3 to 5 short titles that match each point as they make it (`"at": "their exact words"`), like "stop waiting / for *clarity*". Two short lines each, and exactly ONE word in `"italic"` (it turns into the thin italic in their color). Never invent points they didn't make.
+- **Captions** are automatic: one bold white word at a time, a few inches under the chin (`caption_y`, default 1360; check a frame and move it if it covers the face). Put 4 to 8 `emphasis` words per 30 seconds (the words they lean on); those bounce with a pop.
+- **Handwritten pop-ups** (`"notes"`), 1 or 2 per video: a short line that repeats or answers what they're saying, like "you don't have to have it all figured out", at the moment they say it.
+- No other effects unless they ask. If the picks don't name a preset, use The Original Yap.
 
 ### Soft Glass and Bold Highlight: `cards`
 3 to 6 pop-ups, each tied to a phrase (`at` = exact lowercase words from the transcript; optional `after`, `offset`, `dur`). Types:
