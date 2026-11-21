@@ -71,6 +71,15 @@ python3 scripts/typewriter.py "<project>/timeline_words.json" "<project>/base.mp
 ```
 Output goes to `<project>/out/`.
 
+### The Original Yap (`yap.py`): the default talking-head look
+`python3 scripts/make_base.py <project>` then `python3 scripts/yap.py <project>`. Built from real "yap" reels: every word has a moment.
+- **Hook:** `"hook": {"line1": "...", "line2": "...", "sub": "..."}`. line1 = clean white words, line2 = the big italic line in their color (their hook font if they picked one), `sub` = one small handwritten line under it (Caveat: a script that stays easy to read), like "this is your sign to check on her" or "as a homeschool mom of 2". The hook types itself on and stays the whole video (`"dur"` to end it sooner). Write all three from what they actually say.
+- **Captions** build a few words at a time in the middle of the frame (`caption_y`, default 1290; check frames and move it off the face or mouth). Put 4 to 8 `emphasis` words or short phrases per 30 seconds: the words they lean on (feelings, numbers, the twist, the promise). Those switch to the italic in their color.
+- **Side notes** (optional): `"notes": [{"text": "also this is my first yap post :)", "at": "their words", "dur": 4}]`, a small handwritten aside, at most 1 or 2 per video.
+- **Photo pop-ups** (optional): `"pops": [{"img": "<their photo>", "at": "their words", "dur": 1.6}]`, only their own photos or B-roll stills, only when they name the thing.
+- **Sounds** are placed for you unless `"sounds"` is given or `"sfx": false`: a whoosh as the hook types, a pop on each key word (spaced out), a marker squeak on notes, a soft pop on photos, a whoosh out at the end. No other effects unless they ask.
+- If the picks don't name a preset, use The Original Yap.
+
 ### Soft Glass and Bold Highlight: `cards`
 3 to 6 pop-ups, each tied to a phrase (`at` = exact lowercase words from the transcript; optional `after`, `offset`, `dur`). Types:
 - Both: `search` (`queries`: [{`text`, `at`}]), `progress` (`label`), `notification` (`title`, `body`), `bubble` (`text`, `mine`, `right`, `tilt`), `pill` (`text`, `tilt`, `y`).

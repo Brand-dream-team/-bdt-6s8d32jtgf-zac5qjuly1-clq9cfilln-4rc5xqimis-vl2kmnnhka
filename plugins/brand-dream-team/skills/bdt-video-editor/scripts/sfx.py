@@ -1,5 +1,5 @@
 """Add sound effects to a finished video.
-Usage: python3 sfx.py <project> <video_in> <video_out>
+Usage: python3 sfx.py <project> <video_in> <video_out> [cues.json]
 Reads "sounds" from <project>/edit.json:  [{"id": "pop", "at": "exact words"}, {"id": "whoosh", "t": 0.0}, ...]
   id   = a sound in ../sounds/sounds.json, or a file name (without extension) in "sounds_dir" (their own Sounds folder)
   at   = words they say; the sound lands as those words start (found in the FINISHED video, so cuts don't matter)
@@ -12,7 +12,7 @@ work, vin, vout = os.path.abspath(sys.argv[1]), sys.argv[2], sys.argv[3]
 final = vout
 if os.path.abspath(vin) == os.path.abspath(vout): vout = vout + ".sfx.mp4"
 cfg = json.load(open(os.path.join(work, "edit.json")))
-cues = cfg.get("sounds") or []
+cues = json.load(open(sys.argv[4])) if len(sys.argv) > 4 else (cfg.get("sounds") or [])
 if not cues:
     if os.path.abspath(vin) != os.path.abspath(final): subprocess.run(["cp", vin, final], check=True)
     print("no sounds"); sys.exit(0)
